@@ -1,0 +1,170 @@
+/* leadcard.module.css */
+
+.main_container {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 16px;
+  padding: 16px 20px;
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  transition: all 0.3s ease;
+  margin-bottom: 12px;
+}
+
+.main_container:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow:
+    0 8px 30px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.card_header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.name_section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333333;
+}
+
+.source_badge {
+  display: inline-block;
+  background: rgba(74, 111, 165, 0.1);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(74, 111, 165, 0.2);
+  border-radius: 30px;
+  padding: 4px 12px;
+  font-size: 11px;
+  font-weight: 500;
+  color: #4a6fa5;
+}
+
+/* Button styles */
+.add_btn,
+.remove_btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 20px;
+  font-weight: 500;
+  border: none;
+  backdrop-filter: blur(4px);
+}
+
+.add_btn {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  color: #4a6fa5;
+}
+
+.add_btn:hover {
+  background: #4a6fa5;
+  color: white;
+  transform: scale(1.1);
+  border-color: transparent;
+  box-shadow: 0 4px 12px rgba(74, 111, 165, 0.4);
+}
+
+.remove_btn {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  color: #ff6b6b;
+}
+
+.remove_btn:hover {
+  background: #ff6b6b;
+  color: white;
+  transform: scale(1.1) rotate(90deg);
+  border-color: transparent;
+  box-shadow: 0 4px 12px rgba(255, 107, 107, 0.4);
+}
+
+.add_btn:active,
+.remove_btn:active {
+  transform: scale(0.95);
+}
+
+.details_grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.detail_item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #595959;
+}
+
+.detail_item span {
+  word-break: break-word;
+}
+
+/* Phone and Email specific */
+.detail_item.phone::before {
+  content: "📞";
+  font-size: 12px;
+  opacity: 0.7;
+  margin-right: 6px;
+}
+
+.detail_item.email::before {
+  content: "✉";
+  font-size: 12px;
+  opacity: 0.7;
+  margin-right: 6px;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .main_container {
+    padding: 14px 16px;
+  }
+
+  .name {
+    font-size: 14px;
+  }
+
+  .add_btn,
+  .remove_btn {
+    width: 28px;
+    height: 28px;
+    font-size: 18px;
+  }
+
+  .details_grid {
+    gap: 8px;
+  }
+
+  .detail_item {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .details_grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,129 @@
+/* fillterbar.module.css */
+
+.main_container {
+  width: 100%;
+  background: rgba(240, 242, 246, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.inner_container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.fillter_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(198, 198, 222, 0.3);
+}
+
+.fillter_title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333333;
+}
+
+.clearAll_btn {
+  background: rgba(228, 228, 228, 0.5);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 13px;
+  color: #595959;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.clearAll_btn:hover {
+  background: rgba(228, 228, 228, 0.8);
+}
+
+.fillter_section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.section_title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #4a6fa5;
+  margin-bottom: 4px;
+}
+
+.checkbox_group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-left: 4px;
+}
+
+.checkbox_label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #595959;
+  position: relative;
+}
+
+.checkbox_input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkbox_custom {
+  position: relative;
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(198, 198, 222, 0.5);
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.checkbox_label:hover .checkbox_custom {
+  background: rgba(198, 198, 222, 0.2);
+  border-color: rgba(74, 111, 165, 0.5);
+}
+
+.checkbox_label.checked .checkbox_custom {
+  background: #4a6fa5;
+  border-color: #4a6fa5;
+}
+
+.checkbox_label.checked .checkbox_custom::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  width: 4px;
+  height: 8px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.checkbox_text {
+  font-size: 14px;
+  color: #595959;
+}
+
+.checkbox_label.checked .checkbox_text {
+  color: #4a6fa5;
+  font-weight: 500;
+}

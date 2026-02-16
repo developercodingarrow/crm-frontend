@@ -1,0 +1,40 @@
+:root {
+  --font-inter: "Inter", sans-serif;
+  --th-bg-color: rgb(219, 219, 219, 0.9);
+  --th-icon-box: #e4e4e4;
+  --th-icon-color: #595959;
+  --th-white: #f0f2f6;
+  --th-text-dark: #333333;
+  --th-accent-blue: #4a6fa5;
+  --th-accent-green: #5a8d7c;
+  --th-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --th-shadow-hover: 0 6px 16px rgba(0, 0, 0, 0.12);
+  --th-border-radius: 10px;
+}
+
+html {
+  font-size: 62.5%;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  max-width: 100vw;
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: var(--font-inter);
+  background-color: var(--th-bg-color);
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+@media screen and (max-width: 768px) {
+}

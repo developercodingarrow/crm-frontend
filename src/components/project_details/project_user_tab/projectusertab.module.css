@@ -1,0 +1,36 @@
+/* projectusertab.module.css */
+
+.main_container {
+  width: 100%;
+  background-color: white;
+}
+
+.tab_header {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  border-bottom: 1px solid #e0e0e0; /* Light gray bottom border */
+  padding: 10px 16px;
+  margin-bottom: 2rem;
+}
+
+.tab {
+  padding: 12px 4px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #999999; /* Light gray text */
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  transition: all 0.2s ease;
+}
+
+.tab.active {
+  color: #333333; /* Dark gray text */
+  border-bottom: 2px solid #333333; /* Bold dark border */
+}
+
+.tab_body {
+  padding: 0rem 2rem;
+  margin-bottom: 2rem;
+}

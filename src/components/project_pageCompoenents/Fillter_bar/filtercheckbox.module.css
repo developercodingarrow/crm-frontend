@@ -1,0 +1,62 @@
+/* filtercheckbox.module.css */
+
+.checkbox_label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #595959;
+  position: relative;
+}
+
+.checkbox_input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkbox_custom {
+  position: relative;
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(198, 198, 222, 0.5);
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.checkbox_label:hover .checkbox_custom {
+  background: rgba(198, 198, 222, 0.2);
+  border-color: rgba(74, 111, 165, 0.5);
+}
+
+.checkbox_label.checked .checkbox_custom {
+  background: #4a6fa5;
+  border-color: #4a6fa5;
+}
+
+.checkbox_label.checked .checkbox_custom::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  width: 4px;
+  height: 8px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.checkbox_text {
+  font-size: 14px;
+  color: #595959;
+}
+
+.checkbox_label.checked .checkbox_text {
+  color: #4a6fa5;
+  font-weight: 500;
+}

@@ -1,0 +1,89 @@
+.main_container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inner_container {
+  width: 100%;
+  height: 100%;
+  padding-left: 12rem;
+  display: flex;
+  align-items: center;
+}
+
+.crystalBackground {
+  position: absolute;
+  background: linear-gradient(
+    135deg,
+    rgba(221, 221, 223, 0.2),
+    rgba(228, 228, 228, 0.3)
+  );
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  z-index: 10;
+  width: 95vw;
+  height: 95vh;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow:
+    inset 0 0 30px rgba(255, 255, 255, 0.6),
+    0 10px 40px rgba(0, 0, 0, 0.15);
+  border-radius: 20px; /* Optional rounded corners */
+}
+
+.bottomImage {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100vh;
+  width: 50%; /* Half the screen on left side */
+  overflow: hidden;
+  z-index: 5;
+}
+
+.bg_image {
+  filter: blur(8px) brightness(0.9);
+  -webkit-filter: blur(8px) brightness(0.9);
+  transform: scale(1.05);
+  object-fit: cover;
+}
+
+.form_wrapper {
+  z-index: 10;
+  width: 60rem;
+}
+
+@media screen and (max-width: 768px) {
+  .main_container {
+  }
+  .inner_container {
+    width: 100%;
+    height: 100%;
+    padding-left: 0rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 20;
+    padding: 1.5rem;
+  }
+  .crystalBackground {
+    position: absolute;
+    background: linear-gradient(
+      135deg,
+      rgba(221, 221, 223, 0.2),
+      rgba(228, 228, 228, 0.3)
+    );
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    z-index: 10;
+    width: 98vw;
+    height: 98vh;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow:
+      inset 0 0 30px rgba(255, 255, 255, 0.6),
+      0 10px 40px rgba(0, 0, 0, 0.15);
+    border-radius: 10px; /* Optional rounded corners */
+  }
+}

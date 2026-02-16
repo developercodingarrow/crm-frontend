@@ -1,0 +1,30 @@
+.main_container {
+  width: 100%;
+  height: 10rem;
+  display: flex;
+  align-items: center;
+  padding: 0rem 5rem;
+  position: fixed;
+  z-index: 100;
+}
+
+.logo_wraaper {
+  width: 5rem;
+  height: 4rem;
+}
+
+.logoStyle {
+  width: 100%;
+  height: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  .main_container {
+    height: 6rem;
+    padding: 0rem 1rem;
+  }
+  .logo_wraaper {
+    width: 4rem;
+    height: 3.5rem;
+  }
+}

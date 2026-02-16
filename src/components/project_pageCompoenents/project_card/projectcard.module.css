@@ -1,0 +1,155 @@
+.main_container {
+  width: 100%;
+  background: white;
+  backdrop-filter: blur(0);
+  -webkit-backdrop-filter: blur(0);
+  border-radius: 12px;
+  margin-bottom: 10px;
+  padding: 16px;
+  border: 4px solid rgba(198, 198, 222, 0.5);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+}
+
+.card_topBar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.top_leftColumn {
+  display: flex;
+  column-gap: 1rem;
+}
+
+/* Checkbox styling */
+.card_checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card_checkbox input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: rgba(198, 198, 222, 0.7);
+  border-radius: 4px;
+}
+
+/* Property Type Tag - Transparent Light Blue */
+.property_type {
+  background: rgba(173, 216, 230, 0.25); /* Light blue with transparency */
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 8px;
+  padding: 4px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #4a6fa5;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  text-transform: capitalize;
+}
+
+/* Alternative - Purple tone for builder */
+.builder {
+  background: rgba(220, 210, 240, 0.25); /* Light lavender */
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 8px;
+  padding: 4px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #6a5a8c;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  text-transform: capitalize;
+}
+
+/* Created At Column */
+.createdAt_column {
+  font-size: 12px;
+  color: rgba(89, 89, 89, 0.7);
+  background: rgba(228, 228, 228, 0.3);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  padding: 4px 12px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  white-space: nowrap;
+}
+
+.card_title {
+  font-size: 17px;
+  font-weight: 500;
+  color: #2c3e50;
+  margin: 10px 0 6px 0;
+  line-height: 1.4;
+  letter-spacing: 0.2px;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(198, 198, 222, 0.3);
+  padding-bottom: 8px;
+}
+
+.card_footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.property_location {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.location_icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(89, 89, 89, 0.7);
+  font-size: 16px;
+  background: rgba(228, 228, 228, 0.3);
+  padding: 4px;
+  border-radius: 50%;
+  backdrop-filter: blur(4px);
+}
+
+.city {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333333;
+}
+
+.state {
+  font-size: 13px;
+  color: rgba(89, 89, 89, 0.7);
+  position: relative;
+  padding-left: 8px;
+}
+
+.state::before {
+  content: "•";
+  position: absolute;
+  left: 2px;
+  color: rgba(89, 89, 89, 0.4);
+}
+
+.details_btn {
+  background: rgba(198, 198, 222, 0.25);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 20px;
+  padding: 6px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #4a6fa5;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.details_btn:hover {
+  background: rgba(198, 198, 222, 0.4);
+  transform: translateY(-1px);
+}

@@ -1,0 +1,17 @@
+.pageheader_wrapper {
+  margin-bottom: 2rem;
+}
+
+.details_container {
+  display: flex;
+  column-gap: 1rem;
+  padding: 1rem;
+}
+
+.project_details {
+  width: 35%;
+}
+
+.tab_column {
+  flex-grow: 1;
+}
