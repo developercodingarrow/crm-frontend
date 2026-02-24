@@ -1,19 +1,21 @@
 .main_container {
-  padding: 2rem;
-  background: linear-gradient(
-    135deg,
-    rgba(221, 221, 223, 0.2),
-    rgba(228, 228, 228, 0.3)
-  );
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  z-index: 10;
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: var(--th-light-gray-border);
+  height: 70px;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .inner_container {
+  height: 100%;
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
+  margin: 0rem 5rem;
 }
 
 .navbar_logo {
@@ -22,173 +24,246 @@
 }
 
 .nav_logo {
-  width: 4rem;
-  height: 3rem;
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.3);
 }
+
 .navlogo_img {
-  width: 100%;
-  height: 100%;
+  width: 24px;
+  height: 24px;
+  filter: brightness(0) invert(1); /* Makes icon white */
 }
 
 .logo_text {
   font-size: 24px;
   font-weight: 700;
-  color: var(--th-icon-color, #595959);
-  letter-spacing: -0.5px;
-  margin-left: 0.5rem;
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-left: 8px;
 }
 
 .logo_sub {
   font-size: 20px;
   font-weight: 300;
-  color: #333;
-  letter-spacing: -0.5px;
-}
-
-.navigation {
-  display: flex;
-  align-items: center;
-  height: 36px;
-  overflow-x: auto;
-  padding: 0 20px;
-  gap: 10px;
-}
-
-.nav_item {
-  display: flex;
-  align-items: center;
-  color: #333333;
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 500;
-  padding: 0 14px;
-  height: 100%;
-  white-space: nowrap;
-  border-bottom: 3px solid transparent;
-  transition: all 0.2s ease;
-}
-
-.nav_item:hover {
-  color: #fff;
-  background-color: #000;
-  border-bottom-color: rgba(2, 11, 18, 0.3);
-  border-radius: 20px;
-}
-
-/* Active state for current page */
-.nav_item.active {
-  color: #0679c8;
-  border-bottom-color: #0679c8;
-  font-weight: 600;
-}
-
-/* Hide scrollbar but keep functionality */
-.navigation::-webkit-scrollbar {
-  display: none;
-}
-
-.navigation {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+  color: #64748b;
+  margin-left: 2px;
 }
 
 .right_column {
   display: flex;
   align-items: center;
-  column-gap: 2.5rem;
+  column-gap: 1rem;
 }
 
+/* Center Column - Navigation */
+.center_column {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #f8fafc;
+  padding: 4px;
+  border-radius: 40px;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.nav_item {
+  padding: 8px 20px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #64748b;
+  text-decoration: none;
+  border-radius: 30px;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.nav_item:hover {
+  color: #1e293b;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.nav_item.active {
+  color: #3b82f6;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  font-weight: 600;
+}
+
+/* Right Column - User & Notification */
+.right_column {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* User Role Badge */
+.user_role {
+  padding: 6px 16px;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 30px;
+  letter-spacing: 0.3px;
+  box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.3);
+  cursor: default;
+  position: relative;
+  overflow: hidden;
+}
+
+.user_role::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.user_role:hover::before {
+  left: 100%;
+}
+
+/* Notification Bell */
 .notification {
-  width: 36px;
-  height: 36px;
-  font-size: 16px;
-  color: #595959;
+  position: relative;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(228, 228, 228, 0.8); /* Semi-transparent icon box color */
-  backdrop-filter: blur(1px);
-  -webkit-backdrop-filter: blur(1px);
+  background-color: #f8fafc;
   border-radius: 50%;
-  cursor: pointer;
-  box-shadow:
-    0 1px 2px rgba(0, 0, 0, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2),
-    0 0 0 1px rgba(255, 255, 255, 0.2);
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 }
 
 .notification:hover {
-  background: rgba(228, 228, 228, 0.4);
-  box-shadow:
-    0 4px 4px rgba(0, 0, 0, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.4),
-    0 0 0 1px rgba(255, 255, 255, 0.3);
-  transform: translateY(-1px);
+  background-color: #e2e8f0;
+  transform: scale(1.05);
 }
 
-.user_avtar {
-  width: 36px;
-  height: 36px;
-  font-size: 16px;
-  color: #595959;
+.notification svg {
+  font-size: 20px;
+  color: #475569;
+  transition: all 0.2s ease;
+}
+
+.notification:hover svg {
+  color: #1e293b;
+}
+
+.notification_badge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: white;
+  font-size: 11px;
+  font-weight: 600;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 18px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(228, 228, 228, 0.8); /* Semi-transparent icon box color */
-  backdrop-filter: blur(1px);
-  -webkit-backdrop-filter: blur(1px);
-  border-radius: 50%;
-  cursor: pointer;
-  box-shadow:
-    0 1px 2px rgba(0, 0, 0, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2),
-    0 0 0 1px rgba(255, 255, 255, 0.2);
-  transition: all 0.3s ease;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  font-weight: 500;
+  padding: 0 4px;
+  border: 2px solid white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Active link detection (you'll need to handle this with Next.js Link) */
+.nav_item.active {
+  color: #3b82f6;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 @media screen and (max-width: 768px) {
   .main_container {
-    padding: 1rem;
+    height: 60px; /* Smaller navbar on mobile */
   }
-  .navigation {
+
+  .inner_container {
+    padding: 0 0.1rem; /* Less padding on mobile */
+    margin: 0rem 1rem;
+  }
+
+  /* Hide navigation completely */
+  .center_column {
     display: none;
   }
 
-  .navbar_logo {
-    display: flex;
-    align-items: center;
+  /* Make logo smaller */
+  .nav_logo {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
   }
 
-  .nav_logo {
-    width: 3rem;
-    height: 2.5rem;
-  }
   .navlogo_img {
-    width: 100%;
-    height: 100%;
+    width: 18px;
+    height: 18px;
   }
 
   .logo_text {
-    display: none;
+    font-size: 18px;
+    margin-left: 4px;
   }
 
   .logo_sub {
-    display: none;
+    font-size: 14px;
   }
 
+  /* Make user role smaller */
+  .user_role {
+    padding: 4px 10px;
+    font-size: 12px;
+  }
+
+  /* Make notification smaller */
   .notification {
-    width: 25px;
-    height: 25px;
-    font-size: 12px;
+    width: 34px;
+    height: 34px;
   }
 
-  .user_avtar {
-    width: 25px;
-    height: 25px;
-    font-size: 12px;
+  .notification svg {
+    font-size: 16px;
+  }
+
+  .notification_badge {
+    min-width: 16px;
+    height: 16px;
+    font-size: 9px;
+    border-width: 1.5px;
+    top: -3px;
+    right: -3px;
+  }
+
+  /* Reduce gap between right column items */
+  .right_column {
+    gap: 12px;
   }
 }

@@ -37,31 +37,24 @@ export default async function ProjectDetailspage({ params }) {
     }
 
     const data = await response.json();
-  
 
     if (data.status === "success") {
       project = data?.data;
     }
 
     // 2. Now fetch remaining APIs with Promise.all
-    const [usersRes, leadsRes, assignedLeadsRes] = await Promise.all([
-      fetch(`${API_BASE_URL}/user/getAllUsers`, {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
+    const [usersRes, assignedLeadsRes] = await Promise.all([
+      fetch(
+        `${API_BASE_URL}/assignmentProject/getAvailableUsersForProject/${slug}/employees`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+          cache: "no-store",
         },
-        cache: "no-store",
-      }),
-
-      fetch(`${API_BASE_URL}/lead/getAllLeads`, {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-        cache: "no-store",
-      }),
+      ),
 
       fetch(`${API_BASE_URL}/lead/getAssinedLeadsByProject/${slug}`, {
         method: "GET",
@@ -77,9 +70,6 @@ export default async function ProjectDetailspage({ params }) {
     if (!usersRes.ok) {
       throw new Error(`Failed to fetch users: ${usersRes.statusText}`);
     }
-    if (!leadsRes.ok) {
-      throw new Error(`Failed to fetch leads: ${leadsRes.statusText}`);
-    }
     if (!assignedLeadsRes.ok) {
       throw new Error(
         `Failed to fetch assigned leads: ${assignedLeadsRes.statusText}`,
@@ -87,32 +77,28 @@ export default async function ProjectDetailspage({ params }) {
     }
 
     // Parse JSON
-    const [usersData, leadsData, assignedLeadsData] = await Promise.all([
+    const [usersData, assignedLeadsData] = await Promise.all([
       usersRes.json(),
-      leadsRes.json(),
       assignedLeadsRes.json(),
     ]);
 
     if (usersData.status === "success") {
-      allUsers = usersData?.data || [];
-    }
-
-    if (leadsData.status === "success") {
-      allLeads = leadsData?.data || [];
+      console.log("usersData--", usersData?.data?.users);
+      allUsers = usersData?.data?.users || [];
     }
 
     if (assignedLeadsData.status === "success") {
       assignedLeads = assignedLeadsData?.data || [];
     }
   } catch (error) {
-    console.error("Error fetching jobs:", error);
+    console.error("Error fetching:", error);
   }
 
   return (
     <div>
       <ProjectDetailsLayout
         apiData={project}
-        allUsers={allUsers?.users}
+        allUsers={allUsers}
         allLeads={allLeads}
         assignedLeads={assignedLeads}
       />

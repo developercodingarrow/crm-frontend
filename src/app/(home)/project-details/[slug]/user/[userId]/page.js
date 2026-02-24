@@ -62,7 +62,12 @@ export default async function ProjectLeadAssingeToUsertpage({ params }) {
   }
   return (
     <div>
-      <ProjectUserLayout apiData={apiresult} allLeads={allLeads} />
+      <ProjectUserLayout
+        apiData={apiresult}
+        allLeads={allLeads}
+        projectId={slug}
+        userId={userId}
+      />
     </div>
   );
 }

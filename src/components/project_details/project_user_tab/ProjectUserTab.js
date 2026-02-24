@@ -8,7 +8,7 @@ import LeadCard from "../lead_card/LeadCard";
 export default function ProjectUserTab(props) {
   const { assiedUsers = [], allUsers, assignedLeads = [], allLeads } = props;
   const [activeTab, setActiveTab] = useState("assignedusers");
-
+  console.log("allUsers--", allUsers);
   return (
     <div className={styles.main_container}>
       <div className={styles.tab_header}>

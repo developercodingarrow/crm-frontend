@@ -1,0 +1,166 @@
+.formContainer {
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border: 1px solid #edf2f7;
+}
+
+.formTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a202c;
+  margin: 0 0 16px 0;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #edf2f7;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.input {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  background-color: #f8fafc;
+  transition: all 0.2s ease;
+  color: #1a202c;
+  box-sizing: border-box;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #4299e1;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 2px rgba(66, 153, 225, 0.1);
+}
+
+.input::placeholder {
+  color: #a0aec0;
+  font-size: 13px;
+}
+
+.inputError {
+  border-color: #fc8181;
+  background-color: #fff5f5;
+}
+
+.inputError:focus {
+  border-color: #fc8181;
+  box-shadow: 0 0 0 2px rgba(252, 129, 129, 0.1);
+}
+
+.errorMessage {
+  font-size: 11px;
+  color: #e53e3e;
+  margin-left: 4px;
+}
+
+/* Role Tabs - Compact and Scalable */
+.roleTabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 4px 0;
+}
+
+.roleTab {
+  flex: 1 0 auto;
+  min-width: 70px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 12px;
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #4a5568;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.roleTab:hover {
+  background-color: #edf2f7;
+  border-color: #cbd5e0;
+  transform: translateY(-1px);
+}
+
+.roleTabActive {
+  background-color: #4299e1;
+  border-color: #4299e1;
+  color: white;
+  box-shadow: 0 2px 4px rgba(66, 153, 225, 0.2);
+}
+
+.roleTabActive:hover {
+  background-color: #3182ce;
+  border-color: #3182ce;
+}
+
+.roleIcon {
+  font-size: 14px;
+  line-height: 1;
+}
+
+.roleLabel {
+  font-size: 12px;
+}
+
+/* Submit Button */
+.submitBtn {
+  width: 100%;
+  padding: 12px 20px;
+  background-color: #4299e1;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 8px;
+  box-shadow: 0 2px 4px rgba(66, 153, 225, 0.2);
+}
+
+.submitBtn:hover {
+  background-color: #3182ce;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(66, 153, 225, 0.3);
+}
+
+.submitBtn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(66, 153, 225, 0.2);
+}
+
+.submitBtn:focus {
+  outline: none;
+  ring: 2px solid rgba(66, 153, 225, 0.5);
+}
+
+/* Responsive - Stack on very small screens */
+@media (max-width: 400px) {
+  .roleTabs {
+    flex-direction: column;
+  }
+
+  .roleTab {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}

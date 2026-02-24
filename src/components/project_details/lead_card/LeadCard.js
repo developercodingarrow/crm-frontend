@@ -2,7 +2,12 @@ import React from "react";
 import styles from "./leadcard.module.css";
 import { assignLeadsToProject } from "../../../app/utils/assignActions";
 
-export default function LeadCard({ lead, type = "assigned" }) {
+export default function LeadCard({
+  lead,
+  type = "assigned",
+  projectId,
+  userId,
+}) {
   // Default lead data if none provided
   const leadData = lead || {
     id: 1,
@@ -12,10 +17,26 @@ export default function LeadCard({ lead, type = "assigned" }) {
     source: "Referral",
   };
 
-  const handleAdd = (e) => {
+  const handleAdd = async (e) => {
     e.preventDefault();
     e.stopPropagation();
-    console.log("Add lead:", leadData.id);
+    console.log("leadIds:", leadData._id);
+    console.log("projectId:", projectId);
+    console.log("userId:", userId);
+
+    const formData = {
+      leadIds: [leadData._id],
+      projectId: projectId,
+      employeeIds: [userId],
+    };
+
+    console.log("formData--", formData);
+    try {
+      const res = await assignLeadsToProject(formData);
+      console.log("res---", res);
+    } catch (error) {
+      console.log("error---", error);
+    }
     // Add your add logic here
   };
 

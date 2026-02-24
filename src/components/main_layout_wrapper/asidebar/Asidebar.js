@@ -1,43 +1,63 @@
+"use client";
 import React from "react";
 import styles from "./asidebar.module.css";
-import { IoIosArrowForward } from "react-icons/io";
-import { AiOutlineHome } from "react-icons/ai";
+import {
+  GoHome,
+  GoProject,
+  GoPeople,
+  GoGraph,
+  GoGear,
+  GoSignOut,
+} from "react-icons/go";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 export default function Asidebar() {
-  const asidebarItems = [
-    { id: 1, name: "Home", href: "/" },
-    { id: 2, name: "Projects", href: "/projects" },
-    { id: 3, name: "Employess", href: "/employess" },
-    { id: 4, name: "Leads", href: "/leads" },
+  const pathname = usePathname();
+  const navigationItems = [
+    { id: 1, name: "Dashboard", href: "/", icon: <GoHome /> },
+    { id: 2, name: "Projects", href: "/projects", icon: <GoProject /> },
+    { id: 3, name: "Leads", href: "/leads", icon: <GoPeople /> },
+
+    { id: 4, name: "Users", href: "/employees", icon: <GoPeople /> },
+    {
+      id: 5,
+      name: "Create Project",
+      href: "/create-project",
+      icon: <GoGraph />,
+    },
   ];
 
+  const handleLogout = () => {
+    // Add your logout logic here
+    console.log("Logout clicked");
+    // Clear tokens, redirect to login, etc.
+  };
+
   return (
-    <div className={styles.main_container}>
-      <div className={styles.asideBar_header}>
-        <div className={styles.header_item}>
-          <div className={styles.bold_text}>Menu</div>
-          <div className={styles.asidebar_icon}>
-            <IoIosArrowForward />
-          </div>
-        </div>
+    <aside className={styles.asidebar}>
+      <div className={styles.navigation}>
+        {navigationItems.map((item) => (
+          <Link
+            key={item.id}
+            href={item.href}
+            className={`${styles.nav_item} ${
+              pathname === item.href ? styles.active : ""
+            }`}
+          >
+            <span className={styles.nav_icon}>{item.icon}</span>
+            <span className={styles.nav_name}>{item.name}</span>
+          </Link>
+        ))}
       </div>
 
-      <div className={styles.asidebarItems_wrapper}>
-        {asidebarItems.map((item, index) => {
-          return (
-            <Link
-              href={`${item.href}`}
-              className={styles.asidebar_item}
-              key={index}
-            >
-              <div className={styles.asidebar_icon}>
-                <AiOutlineHome />
-              </div>
-              <div className={styles.asidebar_text}>{item.name}</div>
-            </Link>
-          );
-        })}
+      <div className={styles.logout_container}>
+        <button onClick={handleLogout} className={styles.logout_btn}>
+          <span className={styles.logout_icon}>
+            <GoSignOut />
+          </span>
+          <span className={styles.logout_text}>Logout</span>
+        </button>
       </div>
-    </div>
+    </aside>
   );
 }

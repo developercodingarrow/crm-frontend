@@ -190,6 +190,7 @@ export async function assignLeadsToProject(formData) {
       },
     );
 
+    console.log("res--x", res);
     // Check if response is OK
     if (!res.ok) {
       const text = await res.text();

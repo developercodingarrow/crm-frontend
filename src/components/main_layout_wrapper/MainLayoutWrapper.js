@@ -7,21 +7,16 @@ import { AppContext } from "../../_contextApi/AppContext";
 export default function MainLayoutWrapper({ children }) {
   const { isSidebarCollapsed, handelToggleAsidebar } = useContext(AppContext);
   return (
-    <div className={styles.main_conatiner}>
-      <div className={styles.navbar_wrapper} onClick={handelToggleAsidebar}>
+    <div className={styles.main_container}>
+      <section className={styles.mainnavbar_wrapper}>
         <MainNavbar />
-      </div>
-      <div className={styles.inner_layout}>
-        <div
-          className={`${styles.asidebar_wrapper} ${
-            isSidebarCollapsed ? styles.asidbar_wrapper_collapsed : ""
-          }`}
-        >
+      </section>
+      <section className={styles.inner_section}>
+        <div className={styles.asidebar_wrapper}>
           <Asidebar />
         </div>
-
-        <div className={styles.content_wrapper}>{children}</div>
-      </div>
+        <div className={styles.children_wrapper}>{children}</div>
+      </section>
     </div>
   );
 }

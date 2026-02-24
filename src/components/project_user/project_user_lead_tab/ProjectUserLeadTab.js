@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import styles from "./projectuserleadtab.module.css";
 import LeadCard from "../../project_details/lead_card/LeadCard";
 export default function ProjectUserLeadTab(props) {
-  const { assignedLeads, allLeads } = props;
+  const { assignedLeads, allLeads, projectId, userId } = props;
   const [activeTab, setActiveTab] = useState("assignedleads");
 
   return (
@@ -29,7 +29,12 @@ export default function ProjectUserLeadTab(props) {
           (assignedLeads.length > 0 ? (
             assignedLeads.map((item, index) => (
               <div key={item._id || index}>
-                <LeadCard lead={item} type="assigned" />
+                <LeadCard
+                  lead={item}
+                  type="assigned"
+                  projectId={projectId}
+                  userId={userId}
+                />
               </div>
             ))
           ) : (
@@ -41,7 +46,12 @@ export default function ProjectUserLeadTab(props) {
           (allLeads.length > 0 ? (
             allLeads.map((item, index) => (
               <div key={item._id || index}>
-                <LeadCard lead={item} type="available" />
+                <LeadCard
+                  lead={item}
+                  type="available"
+                  projectId={projectId}
+                  userId={userId}
+                />
               </div>
             ))
           ) : (
