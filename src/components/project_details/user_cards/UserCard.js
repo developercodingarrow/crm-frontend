@@ -3,6 +3,7 @@ import styles from "./usercard.module.css";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { assignProjectToEmployee } from "../../../app/utils/assignActions";
+import { assignUserToProjectAction } from "../../../app/utils/projectdetailsActions";
 
 export default function UserCard({ user }) {
   const params = useParams();
@@ -23,12 +24,12 @@ export default function UserCard({ user }) {
   const handleAdd = async (employeeId) => {
     try {
       const formData = {
-        employeeId: employeeId,
+        userId: employeeId,
         projectId: projectId,
       };
       console.log("formData---", formData);
-      const res = await assignProjectToEmployee(formData);
-      console.log("Remove result:", res);
+      const res = await assignUserToProjectAction(formData);
+      console.log("assign result:", res);
 
       if (res?.success) {
         // Optional: Show success message or refresh data
@@ -52,7 +53,7 @@ export default function UserCard({ user }) {
       <div className={styles.leads_section}>
         {/* Remove Button */}
         <button
-          onClick={() => handleAdd(user._id)}
+          onClick={() => handleAdd(user.id)}
           className={styles.add_btn}
           title="Remove user from project"
         >

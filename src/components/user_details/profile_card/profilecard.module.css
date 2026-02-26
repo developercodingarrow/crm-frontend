@@ -1,0 +1,233 @@
+.profileCard {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(203, 213, 225, 0.3);
+  border-radius: 5px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.profileLeft {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex: 1;
+  min-width: 0; /* Important for text truncation */
+}
+
+.avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 600;
+  color: white;
+  box-shadow: 0 2px 5px rgba(59, 130, 246, 0.1);
+  flex-shrink: 0;
+}
+
+.userInfo h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 4px 0;
+}
+.userRole {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--th-light-text-color);
+  font-size: 14px;
+  margin-bottom: 3px;
+}
+
+.userMeta {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 8px;
+}
+
+.userMeta span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--th-light-text-color);
+  font-size: 14px;
+}
+
+.profileRight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 16px;
+}
+
+.statusBadge {
+  padding: 6px 16px;
+  border-radius: 30px;
+  font-size: 12px;
+  font-weight: 500;
+  background: #e0f7e9;
+  color: #10b981;
+}
+
+.statusBadge.active {
+  background: #e0f7e9;
+  color: #10b981;
+}
+
+.messageBtn {
+  padding: 10px 24px;
+  background: #25d366;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.messageBtn:hover {
+  background: #128c7e;
+  transform: translateY(-2px);
+}
+
+@media screen and (max-width: 768px) {
+  .profileCard {
+    border-radius: 5px;
+    padding: 10px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .profileLeft {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex: 1;
+    min-width: 0; /* Important for text truncation */
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 600;
+    color: white;
+    box-shadow: 0 2px 5px rgba(59, 130, 246, 0.1);
+    flex-shrink: 0;
+  }
+
+  .userInfo h2 {
+    font-size: 14px;
+    font-weight: 500;
+    color: #1e293b;
+    margin: 0 0 2px 0;
+  }
+  .userRole {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--th-light-text-color);
+    font-size: 14px;
+    margin-bottom: 1px;
+  }
+
+  .userMeta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1px;
+  }
+
+  .userMeta span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--th-light-text-color);
+    font-size: 14px;
+  }
+
+  .profileRight {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .statusBadge {
+    padding: 0px 0px;
+    border-radius: 50px;
+    font-size: 10px;
+    font-weight: 500;
+    background: #e0f7e9;
+    color: #10b981;
+    width: 10px;
+    height: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .statusBadge.active {
+    background: #e0f7e9;
+    color: #10b981;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+  }
+
+  .active_text {
+    display: none;
+  }
+
+  .messageBtn {
+    padding: 10px 10px;
+    background: #25d366;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .message_text {
+    display: none;
+  }
+
+  .messageBtn:hover {
+    background: #128c7e;
+    transform: translateY(-2px);
+  }
+}

@@ -16,7 +16,7 @@ export default async function ProjectLeadAssingeToUsertpage({ params }) {
   try {
     // 1. First API - Fetch project employees (already done)
     const response = await fetch(
-      `${API_BASE_URL}/lead/employee/${userId}/project/${slug}/leads`,
+      `${API_BASE_URL}/projectuserDetail/getUserLeadsByProject/${slug}/user/${userId}`,
       {
         method: "GET",
         headers: {
@@ -37,14 +37,17 @@ export default async function ProjectLeadAssingeToUsertpage({ params }) {
       apiresult = data?.data;
     }
 
-    const leadsRes = await fetch(`${API_BASE_URL}/lead/getAllLeads`, {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
+    const leadsRes = await fetch(
+      `${API_BASE_URL}/projectuserDetail/getAvailableLeadsForUser/${slug}/user/${userId}`,
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        cache: "no-store",
       },
-      cache: "no-store",
-    });
+    );
 
     if (!leadsRes.ok) {
       throw new Error(`Failed to fetch leads: ${leadsRes.statusText}`);
@@ -52,14 +55,13 @@ export default async function ProjectLeadAssingeToUsertpage({ params }) {
 
     const leadData = await leadsRes.json();
 
-    console.log("leadData--", leadData);
-
     if (leadData.status === "success") {
-      allLeads = leadData?.data;
+      allLeads = leadData.data.leads;
     }
   } catch (error) {
     console.error("Error fetching jobs:", error);
   }
+
   return (
     <div>
       <ProjectUserLayout

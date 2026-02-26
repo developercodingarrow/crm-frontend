@@ -1,0 +1,376 @@
+.projectCard {
+  background: #f8fafc;
+  border-radius: 20px;
+  padding: 20px;
+  transition: all 0.2s ease;
+}
+
+.projectDetailCard:hover {
+  background: white;
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.projectDetailHeader {
+  margin-bottom: 16px;
+}
+
+.projectDetailHeader h4 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 4px 0;
+}
+
+/* Header Section */
+.cardHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.titleSection h4 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.location {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.location svg {
+  font-size: 14px;
+  color: #3b82f6;
+}
+
+.leadBadge {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: white;
+  padding: 6px 14px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
+}
+
+/* Builder Info */
+.builderInfo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #475569;
+  font-size: 14px;
+  padding: 10px 0;
+  margin-bottom: 16px;
+  border-bottom: 1px dashed rgba(203, 213, 225, 0.5);
+}
+
+.builderInfo svg {
+  color: #3b82f6;
+}
+
+/* Metrics Row */
+.metricsRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f8fafc;
+  padding: 16px;
+  border-radius: 16px;
+  margin-bottom: 20px;
+}
+
+.metric {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.metricLabel {
+  font-size: 12px;
+  color: #64748b;
+  margin-bottom: 4px;
+}
+
+.metricValue {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.metricValue.small {
+  font-size: 20px;
+}
+
+.metricDivider {
+  width: 1px;
+  height: 30px;
+  background: rgba(203, 213, 225, 0.5);
+}
+
+/* Progress Section */
+.progressSection {
+  margin-bottom: 20px;
+}
+
+.progressHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.progressHeader span:first-child {
+  font-size: 14px;
+  font-weight: 500;
+  color: #475569;
+}
+
+.progressHeader span:last-child {
+  font-size: 14px;
+  font-weight: 600;
+  color: #3b82f6;
+}
+
+.progressBar {
+  height: 8px;
+  background: #e2e8f0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6, #2563eb);
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+/* Status Distribution */
+.statusDistribution {
+  margin-bottom: 16px;
+  padding: 8px 0;
+}
+
+.distributionItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.distributionLabel {
+  width: 80px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #475569;
+}
+
+.distributionBar {
+  flex: 1;
+  height: 8px;
+  background: #f1f5f9;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.distributionValue {
+  width: 35px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1e293b;
+  text-align: right;
+}
+
+/* Footer */
+.cardFooter {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid rgba(203, 213, 225, 0.3);
+}
+
+.viewButton {
+  width: 100%;
+  padding: 12px;
+  background: white;
+  border: 1px solid rgba(203, 213, 225, 0.3);
+  border-radius: 30px;
+  color: #3b82f6;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.viewButton:hover {
+  background: #3b82f6;
+  color: white;
+  border-color: #3b82f6;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.viewButton:hover svg {
+  transform: translateX(4px);
+}
+
+.viewButton svg {
+  transition: transform 0.2s ease;
+}
+
+/* Status Colors - For distribution bars */
+.statusNew {
+  background: #3b82f6;
+}
+.statusInterested {
+  background: #10b981;
+}
+.statusConverted {
+  background: #8b5cf6;
+}
+.statusFollowup {
+  background: #f59e0b;
+}
+.statusContacted {
+  background: #8b5cf6;
+}
+.statusLost {
+  background: #64748b;
+}
+.statusNotInterested {
+  background: #ef4444;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .projectCard {
+    padding: 20px;
+  }
+
+  .titleSection h4 {
+    font-size: 18px;
+  }
+
+  .leadBadge {
+    padding: 4px 12px;
+    font-size: 12px;
+  }
+
+  .metricValue {
+    font-size: 20px;
+  }
+
+  .distributionLabel {
+    width: 70px;
+    font-size: 12px;
+  }
+}
+
+.projectDetailCard {
+  background: #f8fafc;
+  border-radius: 20px;
+  padding: 20px;
+  transition: all 0.2s ease;
+}
+
+.projectDetailCard:hover {
+  background: white;
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.projectDetailHeader {
+  margin-bottom: 16px;
+}
+
+.projectMetrics {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  padding: 12px 0;
+  border-top: 1px solid rgba(203, 213, 225, 0.3);
+  border-bottom: 1px solid rgba(203, 213, 225, 0.3);
+}
+
+.metric {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.metricLabel {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.metricValue {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.statusDistribution {
+  margin-bottom: 16px;
+}
+
+.distributionItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.distributionLabel {
+  width: 70px;
+  font-size: 12px;
+  color: #475569;
+}
+
+.distributionBar {
+  flex: 1;
+  height: 6px;
+  background: #e2e8f0;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.distributionValue {
+  width: 30px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #1e293b;
+  text-align: right;
+}
+
+.viewProjectBtn {
+  width: 100%;
+  padding: 10px;
+  background: white;
+  border: 1px solid rgba(203, 213, 225, 0.3);
+  border-radius: 12px;
+  color: #3b82f6;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.viewProjectBtn:hover {
+  background: #3b82f6;
+  color: white;
+  border-color: #3b82f6;
+}

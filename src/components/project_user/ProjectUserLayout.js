@@ -5,10 +5,11 @@ import ProjectDetailsBox from "../project_details/project_detail_box/ProjectDeta
 import ProjectUserLeadTab from "./project_user_lead_tab/ProjectUserLeadTab";
 export default function ProjectUserLayout(props) {
   const { apiData, allLeads, projectId, userId } = props;
+  console.log("project user -", apiData);
   return (
     <div className={styles.main_container}>
       <div className={styles.pageheader_wrapper}>
-        <ProjectUserHeader />
+        <ProjectUserHeader projectuser={apiData.user} />
       </div>
       <div className={styles.details_container}>
         <div className={styles.project_details}>

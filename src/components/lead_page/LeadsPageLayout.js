@@ -41,8 +41,9 @@ export default function LeadsPageLayout(props) {
 
   const handleAddLead = async (newLead) => {
     try {
+      console.log("newLead-", newLead);
       const res = await createNewLead(newLead);
-      console.log("res---", res);
+      console.log("createNewLead---", res);
       if (res.data.status === "success") {
         const createdLead = res.data.data; // or res.data depending on your API structure
         // Format the lead to match your frontend structure

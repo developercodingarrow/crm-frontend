@@ -4,11 +4,12 @@ import styles from "./projectusertab.module.css";
 import AssiendUserCard from "../user_cards/AssiendUserCard";
 import UserCard from "../user_cards/UserCard";
 import LeadCard from "../lead_card/LeadCard";
+import AssignedLeadCard from "../lead_card/AssignedLeadCard";
 
 export default function ProjectUserTab(props) {
   const { assiedUsers = [], allUsers, assignedLeads = [], allLeads } = props;
   const [activeTab, setActiveTab] = useState("assignedusers");
-  console.log("allUsers--", allUsers);
+  console.log("assignedLeads--", assignedLeads);
   return (
     <div className={styles.main_container}>
       <div className={styles.tab_header}>
@@ -62,7 +63,7 @@ export default function ProjectUserTab(props) {
           (assignedLeads.length > 0 ? (
             assignedLeads.map((item, index) => (
               <div key={item._id || index}>
-                <LeadCard lead={item} type="assigned" />
+                <AssignedLeadCard lead={item} />
               </div>
             ))
           ) : (

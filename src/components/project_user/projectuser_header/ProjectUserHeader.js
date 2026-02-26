@@ -1,9 +1,10 @@
 import React from "react";
 import styles from "./projectuserheader.module.css";
-export default function ProjectUserHeader() {
+export default function ProjectUserHeader(props) {
+  const { projectuser } = props;
   return (
     <div className={styles.main_container}>
-      <div className={styles.project_name}>Rohan user name</div>
+      <div className={styles.project_name}>{projectuser.name}</div>
       <div className={styles.project_statsbox}>
         <div className={styles.stats_box}>
           <span>10</span>

@@ -1,6 +1,8 @@
 import React from "react";
 import styles from "./leadcard.module.css";
-import { assignLeadsToProject } from "../../../app/utils/assignActions";
+
+import { assignLeadToUserAction } from "../../../app/utils/projectuserdetailsActions";
+assignLeadToUserAction;
 
 export default function LeadCard({
   lead,
@@ -17,22 +19,24 @@ export default function LeadCard({
     source: "Referral",
   };
 
+  console.log("lead--", lead);
+
   const handleAdd = async (e) => {
     e.preventDefault();
     e.stopPropagation();
-    console.log("leadIds:", leadData._id);
+    console.log("leadIds:", leadData.id);
     console.log("projectId:", projectId);
     console.log("userId:", userId);
 
     const formData = {
-      leadIds: [leadData._id],
+      leadId: leadData.id,
       projectId: projectId,
-      employeeIds: [userId],
+      userId: userId,
     };
 
     console.log("formData--", formData);
     try {
-      const res = await assignLeadsToProject(formData);
+      const res = await assignLeadToUserAction(formData);
       console.log("res---", res);
     } catch (error) {
       console.log("error---", error);
@@ -41,6 +45,7 @@ export default function LeadCard({
   };
 
   const handleRemove = (e) => {
+    // projectId
     e.preventDefault();
     e.stopPropagation();
     console.log("Remove lead:", leadData.id);

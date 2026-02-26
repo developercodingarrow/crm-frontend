@@ -3,6 +3,7 @@ import styles from "./usercard.module.css";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { removeEmployeefromProject } from "../../../app/utils/assignActions";
+import { removeUserFromProjectAction } from "../../../app/utils/projectdetailsActions";
 
 export default function AssignedUserCard({ user }) {
   const params = useParams();
@@ -18,16 +19,17 @@ export default function AssignedUserCard({ user }) {
       .slice(0, 2);
   };
 
+  console.log("user", user);
   const initials = getInitials(user.name);
 
   const handleRemove = async (employeeId) => {
     try {
       const formData = {
-        employeeId: employeeId,
+        userId: employeeId,
         projectId: projectId,
       };
-      console.log("formData---", formData);
-      const res = await removeEmployeefromProject(formData);
+      console.log(" handleRemove formData---", formData);
+      const res = await removeUserFromProjectAction(formData);
       console.log("Remove result:", res);
 
       if (res?.success) {
@@ -56,7 +58,7 @@ export default function AssignedUserCard({ user }) {
         </div>
 
         <Link
-          href={`/project-details/${projectId}/user/${user.id}`}
+          href={`/project-details/${projectId}/user/${user._id}`}
           className={styles.view_leads_btn}
         >
           Assine Leads
@@ -64,7 +66,7 @@ export default function AssignedUserCard({ user }) {
 
         {/* Remove Button */}
         <button
-          onClick={() => handleRemove(user.id)}
+          onClick={() => handleRemove(user._id)}
           className={styles.remove_btn}
           title="Remove user from project"
         >

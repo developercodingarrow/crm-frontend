@@ -14,14 +14,14 @@ export default async function ProjectDetailspage({ params }) {
   const { slug } = await params;
 
   let project = [];
-  let allUsers = [];
+  let availableUsers = [];
   let allLeads = [];
   let assignedLeads = [];
 
   try {
     // 1. First API - Fetch project employees (already done)
     const response = await fetch(
-      `${API_BASE_URL}/assignmentProject/getProjectEmployees/${slug}/employees`,
+      `${API_BASE_URL}/projectDetail/getProjectUsers/${slug}`,
       {
         method: "GET",
         headers: {
@@ -43,9 +43,9 @@ export default async function ProjectDetailspage({ params }) {
     }
 
     // 2. Now fetch remaining APIs with Promise.all
-    const [usersRes, assignedLeadsRes] = await Promise.all([
+    const [availableUserssRes, assignedLeadsRes] = await Promise.all([
       fetch(
-        `${API_BASE_URL}/assignmentProject/getAvailableUsersForProject/${slug}/employees`,
+        `${API_BASE_URL}/projectDetail/getAvailableUsersForProject/${slug}`,
         {
           method: "GET",
           headers: {
@@ -56,7 +56,7 @@ export default async function ProjectDetailspage({ params }) {
         },
       ),
 
-      fetch(`${API_BASE_URL}/lead/getAssinedLeadsByProject/${slug}`, {
+      fetch(`${API_BASE_URL}/projectDetail/getProjectLeads/${slug}`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -67,8 +67,10 @@ export default async function ProjectDetailspage({ params }) {
     ]);
 
     // Check responses
-    if (!usersRes.ok) {
-      throw new Error(`Failed to fetch users: ${usersRes.statusText}`);
+    if (!availableUserssRes.ok) {
+      throw new Error(
+        `Failed to fetch users: ${availableUserssRes.statusText}`,
+      );
     }
     if (!assignedLeadsRes.ok) {
       throw new Error(
@@ -78,28 +80,28 @@ export default async function ProjectDetailspage({ params }) {
 
     // Parse JSON
     const [usersData, assignedLeadsData] = await Promise.all([
-      usersRes.json(),
+      availableUserssRes.json(),
       assignedLeadsRes.json(),
     ]);
 
     if (usersData.status === "success") {
       console.log("usersData--", usersData?.data?.users);
-      allUsers = usersData?.data?.users || [];
+      availableUsers = usersData?.data?.availableUsers || [];
     }
 
     if (assignedLeadsData.status === "success") {
-      assignedLeads = assignedLeadsData?.data || [];
+      assignedLeads = assignedLeadsData?.data?.leads || [];
     }
   } catch (error) {
     console.error("Error fetching:", error);
   }
 
+  console.log("availableUsers--", availableUsers);
   return (
     <div>
       <ProjectDetailsLayout
         apiData={project}
-        allUsers={allUsers}
-        allLeads={allLeads}
+        availableUsers={availableUsers}
         assignedLeads={assignedLeads}
       />
     </div>

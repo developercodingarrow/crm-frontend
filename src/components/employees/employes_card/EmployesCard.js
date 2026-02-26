@@ -24,7 +24,7 @@ export default function EmployesCard({ user }) {
 
   return (
     <div className={styles.cardWrapper}>
-      <Link href={`/employee/${user._id}`} className={styles.cardLink}>
+      <Link href={`/user-details//${user._id}`} className={styles.cardLink}>
         <div className={styles.card}>
           <div className={styles.cardLeft}>
             <div className={styles.cardHeader}>
