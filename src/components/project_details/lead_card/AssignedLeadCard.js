@@ -1,48 +1,129 @@
 import React from "react";
-import styles from "./leadcard.module.css";
-import { removeUserFromProjectAction } from "../../../app/utils/projectdetailsActions";
+import styles from "./assignedleadcard.module.css";
+import { GoPerson, GoMail, GoDeviceMobile } from "react-icons/go";
+import { MdMessage, MdGroup, MdArrowForward } from "react-icons/md";
+import { IoMdAttach } from "react-icons/io";
 
 export default function AssignedLeadCard(props) {
   const { lead, projectId, userId } = props;
 
-  console.log("lead--", lead, "userId", lead.assignedUsers.id);
-
-  // Default lead data if none provided
-  const leadData = lead || {
-    id: 1,
-    name: "Amit Kumar",
-    phone: "9876543212",
-    email: "amit@yahoo.com",
-    source: "Referral",
+  // Get status color
+  const getStatusColor = (status) => {
+    switch (status) {
+      case "New":
+        return "#3b82f6";
+      case "Contacted":
+        return "#8b5cf6";
+      case "Follow-up":
+        return "#f59e0b";
+      case "Interested":
+        return "#10b981";
+      case "Not Interested":
+        return "#ef4444";
+      case "Converted":
+        return "#8b5cf6";
+      case "Lost":
+        return "#64748b";
+      default:
+        return "#64748b";
+    }
   };
-  const handleRemove = (e) => {
-    alert("no need to add remove lead");
-    console.log("no need remove button");
+
+  // Get status background
+  const getStatusBg = (status) => {
+    switch (status) {
+      case "New":
+        return "#e8f0fe";
+      case "Contacted":
+        return "#f3e8ff";
+      case "Follow-up":
+        return "#fff3e0";
+      case "Interested":
+        return "#e0f7e9";
+      case "Not Interested":
+        return "#fee9e9";
+      case "Converted":
+        return "#f3e8ff";
+      case "Lost":
+        return "#f1f5f9";
+      default:
+        return "#f1f5f9";
+    }
   };
   return (
-    <div className={styles.main_container}>
-      <div className={styles.card_header}>
-        <div className={styles.name_section}>
-          <div className={styles.name}>{leadData.name}</div>
-          <div className={styles.source_badge}>{leadData.source}</div>
+    <div className={styles.card}>
+      {/* Left Section - Lead Info */}
+      <div className={styles.leftSection}>
+        <div className={styles.nameRow}>
+          <span className={styles.name}>{lead.name}</span>
+          <span className={styles.userCount}>
+            <GoPerson /> {lead.userCount}
+          </span>
         </div>
 
-        <button
-          onClick={handleRemove}
-          className={styles.remove_btn}
-          title="Remove lead"
-        >
-          ×
-        </button>
+        <div className={styles.contactInfo}>
+          <span className={styles.phone}>
+            <GoDeviceMobile /> {lead.phone}
+          </span>
+          <span className={styles.email}>
+            <GoMail /> {lead.email}
+          </span>
+        </div>
+
+        <div className={styles.badgesRow}>
+          <span className={styles.sourceBadge}>
+            <IoMdAttach className={styles.sourceIcon} />
+            {lead.source}
+          </span>
+          <span
+            className={styles.statusBadge}
+            style={{
+              background: getStatusBg(lead.status),
+              color: getStatusColor(lead.status),
+            }}
+          >
+            {lead.status}
+          </span>
+        </div>
+
+        {/* Assigned Users */}
+        {lead.assignedUsers && lead.assignedUsers.length > 0 && (
+          <div className={styles.assignedUsers}>
+            <MdGroup className={styles.groupIcon} />
+
+            {/* Show first 3 users */}
+            {lead.assignedUsers.slice(0, 3).map((user, index) => (
+              <span key={user.id} className={styles.userTag}>
+                {user.name} ({user.role})
+                {index < Math.min(lead.assignedUsers.length, 3) - 1 && ", "}
+              </span>
+            ))}
+
+            {/* If more than 3 users, show "see all" link */}
+            {lead.assignedUsers.length > 3 && (
+              <>
+                <span className={styles.moreUsers}>...</span>
+                <a href="/users" className={styles.seeAllLink}>
+                  see all {lead.assignedUsers.length}
+                </a>
+              </>
+            )}
+          </div>
+        )}
       </div>
 
-      <div className={styles.details_grid}>
-        <div className={`${styles.detail_item} ${styles.phone}`}>
-          {leadData.phone}
-        </div>
-        <div className={`${styles.detail_item} ${styles.email}`}>
-          {leadData.email}
-        </div>
+      {/* Right Section - Action Links */}
+      <div className={styles.rightSection}>
+        <a href="/remarks" className={styles.actionLink}>
+          <MdMessage className={styles.actionIcon} />
+          <span>Remarks</span>
+          <MdArrowForward className={styles.arrowIcon} />
+        </a>
+        <a href="/users" className={styles.actionLink}>
+          <MdGroup className={styles.actionIcon} />
+          <span>All Users</span>
+          <MdArrowForward className={styles.arrowIcon} />
+        </a>
       </div>
     </div>
   );

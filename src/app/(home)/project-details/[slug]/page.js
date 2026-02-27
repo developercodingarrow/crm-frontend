@@ -15,8 +15,10 @@ export default async function ProjectDetailspage({ params }) {
 
   let project = [];
   let availableUsers = [];
+  let avilableuserCount;
   let allLeads = [];
   let assignedLeads = [];
+  let leadStatistics;
 
   try {
     // 1. First API - Fetch project employees (already done)
@@ -87,22 +89,25 @@ export default async function ProjectDetailspage({ params }) {
     if (usersData.status === "success") {
       console.log("usersData--", usersData?.data?.users);
       availableUsers = usersData?.data?.availableUsers || [];
+      avilableuserCount = usersData?.results;
     }
 
     if (assignedLeadsData.status === "success") {
       assignedLeads = assignedLeadsData?.data?.leads || [];
+      leadStatistics = assignedLeadsData?.data?.statistics;
     }
   } catch (error) {
     console.error("Error fetching:", error);
   }
 
-  console.log("availableUsers--", availableUsers);
   return (
     <div>
       <ProjectDetailsLayout
         apiData={project}
         availableUsers={availableUsers}
         assignedLeads={assignedLeads}
+        avilableuserCount={avilableuserCount}
+        leadStats={leadStatistics}
       />
     </div>
   );

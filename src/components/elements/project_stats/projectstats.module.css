@@ -1,0 +1,70 @@
+.container {
+  padding: 10px;
+  border: 1px solid #e9ecef;
+  margin-bottom: 20px;
+  max-width: 500px;
+  background-color: #ffffff;
+
+  border-radius: 10px;
+}
+
+.inner_container {
+  padding: 20px;
+  border-radius: 10px;
+  background-color: var(--th-main-container-bg);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.sectionTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 16px 0;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.sectionDivider {
+  margin: 20px 0 12px 0;
+  position: relative;
+  text-align: center;
+}
+
+.sectionDivider span {
+  background: #ffffff;
+  padding: 0 12px;
+  color: #475569;
+  font-size: 14px;
+  font-weight: 600;
+  position: relative;
+  z-index: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.sectionDivider::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: #e2e8f0;
+  z-index: 0;
+}
+
+.emptyMessage {
+  text-align: center;
+  color: #94a3b8;
+  padding: 24px;
+  font-size: 14px;
+  background: #f8fafc;
+  border-radius: 8px;
+  margin-top: 16px;
+}
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 16px;
+  }
+}

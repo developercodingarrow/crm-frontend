@@ -1,0 +1,64 @@
+.statBar {
+  margin-bottom: 24px;
+}
+
+.label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #475569;
+  margin-bottom: 8px;
+}
+
+.barstats_wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.distributionBar {
+  flex: 1;
+  height: 8px;
+  background: #e2e8f0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.value {
+  min-width: 30px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1e293b;
+  text-align: right;
+}
+
+.numberstats {
+  display: flex;
+  gap: 16px;
+  font-size: 12px;
+  color: #64748b;
+  margin-top: 4px;
+}
+
+.numberstats span {
+  display: flex;
+  align-items: center;
+}
+
+.numberstats span:not(:last-child)::after {
+  content: "|";
+  margin-left: 16px;
+  color: #cbd5e1;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .numberstats {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .numberstats span:not(:last-child)::after {
+    display: none;
+  }
+}

@@ -1,0 +1,127 @@
+.main_container {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(203, 213, 225, 0.3);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 0px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.inner_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.left_column {
+}
+
+.project_title h2 {
+  font-size: 26px;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 4px 0;
+}
+
+.filed_meta {
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+  margin-bottom: 0.5rem;
+}
+
+.filed_meta span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--th-light-text-color);
+  font-size: 14px;
+}
+
+.date_text {
+  color: var(--th-bold-text-color);
+  font-size: 12px;
+  background-color: #e9ecef8b;
+  padding: 0.7rem 1rem;
+  border-radius: 20px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.right_column {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+.price_box {
+  /* background-color: #e9ecef8b; */
+  padding: 0px 10px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 2rem;
+}
+
+.min_price,
+.max_price {
+  display: flex;
+  align-items: center;
+  color: #2c3e50;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.min_price svg,
+.max_price svg {
+  color: #6c757d;
+  margin-right: 2px;
+}
+
+.price_separator {
+  color: #adb5bd;
+  font-size: 16px;
+}
+
+@media screen and (max-width: 768px) {
+  .main_container {
+    border-radius: 3px;
+    padding: 5px 10px;
+  }
+  .project_title h2 {
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0 0 2px 0;
+  }
+  .filed_meta span {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    color: var(--th-light-text-color);
+    font-size: 12px;
+  }
+  .price_box {
+    /* background-color: #e9ecef8b; */
+    padding: 0px 5px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 2rem;
+  }
+
+  .min_price,
+  .max_price {
+    display: flex;
+    align-items: center;
+    color: #2c3e50;
+    font-size: 14px;
+    font-weight: 500;
+  }
+}

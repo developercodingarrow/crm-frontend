@@ -4,8 +4,14 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import { assignProjectToEmployee } from "../../../app/utils/assignActions";
 import { assignUserToProjectAction } from "../../../app/utils/projectdetailsActions";
+import { GoPerson, GoMail, GoBriefcase } from "react-icons/go";
+import {
+  MdOutlineMessage,
+  MdRemoveCircleOutline,
+  MdAddCircleOutline,
+} from "react-icons/md";
 
-export default function UserCard({ user }) {
+export default function UserCard({ user, onAdd }) {
   const params = useParams();
   const projectId = params.slug; // Get slug from URL
   // Get initials from name
@@ -19,53 +25,38 @@ export default function UserCard({ user }) {
       .slice(0, 2);
   };
 
-  const initials = getInitials(user.name);
-
-  const handleAdd = async (employeeId) => {
-    try {
-      const formData = {
-        userId: employeeId,
-        projectId: projectId,
-      };
-      console.log("formData---", formData);
-      const res = await assignUserToProjectAction(formData);
-      console.log("assign result:", res);
-
-      if (res?.success) {
-        // Optional: Show success message or refresh data
-        console.log("User removed successfully");
-      }
-    } catch (error) {
-      console.error("Error removing user:", error);
-    }
+  const handleAddClick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    // Call the parent handler with user ID
+    onAdd(user.id);
   };
 
   return (
-    <div className={styles.main_container}>
-      <div className={styles.user_info_section}>
-        <div className={styles.avatar}>{initials}</div>
-        <div className={styles.user_details}>
-          <div className={styles.user_name}>{user.name}</div>
-          <div className={styles.user_email}>{user.email}</div>
+    <div className={styles.card}>
+      {/* Left Section - User Info */}
+      <div className={styles.leftSection}>
+        <div className={styles.nameRow}>
+          <span className={styles.name}>{user.name}</span>
+          <span className={styles.role}>
+            <GoBriefcase /> {user.role}
+          </span>
+        </div>
+        <div className={styles.emailRow}>
+          <GoMail className={styles.emailIcon} />
+          <span className={styles.email}>{user.email}</span>
         </div>
       </div>
 
-      <div className={styles.leads_section}>
-        {/* Remove Button */}
+      {/* Right Section - Actions */}
+      <div className={styles.rightSection}>
         <button
-          onClick={() => handleAdd(user.id)}
-          className={styles.add_btn}
-          title="Remove user from project"
+          className={styles.addBtn}
+          onClick={handleAddClick} // 👈 Use the handler
+          title="Add user to project"
         >
-          +
+          <MdAddCircleOutline />
         </button>
-
-        <Link
-          href={`/project-details/${projectId}/user/${user._id}`}
-          className={styles.view_leads_btn}
-        >
-          Assine Leads
-        </Link>
       </div>
     </div>
   );
