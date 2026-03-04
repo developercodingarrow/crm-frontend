@@ -122,14 +122,17 @@ export default function AssignedUserCard({ user, onRemove }) {
         </div> */}
 
         {/* Assigned Leads Link */}
-        <div className={styles.leadsLink}>
+        <Link
+          href={`/project-details/${projectId}/user/${user._id}`}
+          className={styles.leadsLink}
+        >
           <MdOutlineMessage className={styles.messageIcon} />
           <span>Assigned Leads</span>
           <span className={styles.leadCount}>{userData.leadCount}</span>
           {userData.unreadCount > 0 && (
             <span className={styles.unreadBadge}>{userData.unreadCount}</span>
           )}
-        </div>
+        </Link>
       </div>
 
       {/* Right Section - Actions */}
@@ -145,3 +148,5 @@ export default function AssignedUserCard({ user, onRemove }) {
     </div>
   );
 }
+
+// project-details/699fdaf537e9c491276b99d3/user/699fdae949881b54b86e4bff

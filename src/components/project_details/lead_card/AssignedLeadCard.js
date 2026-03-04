@@ -6,7 +6,7 @@ import { IoMdAttach } from "react-icons/io";
 
 export default function AssignedLeadCard(props) {
   const { lead, projectId, userId } = props;
-
+  console.log("lead---", lead);
   // Get status color
   const getStatusColor = (status) => {
     switch (status) {
@@ -114,7 +114,10 @@ export default function AssignedLeadCard(props) {
 
       {/* Right Section - Action Links */}
       <div className={styles.rightSection}>
-        <a href="/remarks" className={styles.actionLink}>
+        <a
+          href="/user-project/xyz/user-leads/xyz"
+          className={styles.actionLink}
+        >
           <MdMessage className={styles.actionIcon} />
           <span>Remarks</span>
           <MdArrowForward className={styles.arrowIcon} />

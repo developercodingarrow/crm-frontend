@@ -2,9 +2,8 @@ import React from "react";
 import styles from "./userprojectleadremarks.module.css";
 import LeadMessenger from "../elements/lead messenger/LeadMessenger";
 export default function UserProjectLeadRemarks(props) {
-  const { apiData } = props;
+  const { apiData, userid } = props;
 
-  console.log("apiData--", apiData?.leads);
   return (
     <div className={styles.main_container}>
       <section className={styles.pageHeader_section}>
@@ -25,7 +24,7 @@ export default function UserProjectLeadRemarks(props) {
         </div>
       </section>
       <section>
-        <LeadMessenger projectLeads={apiData?.leads} />
+        <LeadMessenger projectLeads={apiData?.leads} userid={userid} />
       </section>
     </div>
   );

@@ -32,8 +32,6 @@ export default function ProjectStats(props) {
     },
   };
 
-  console.log("assignedLeadsList--", assignedLeadsList);
-
   const totalusers = avilableuserCount + assignedUsers;
   const totalLeads = assignedLeadsList.length;
 

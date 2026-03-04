@@ -13,6 +13,8 @@ import HeaderTopBar from "../elements/header_top_bar/HeaderTopBar";
 import StatTab from "../elements/stat_tab/StatTab";
 import EmployesCard from "./employes_card/EmployesCard";
 import UserForm from "./User_Form/UserForm";
+import CreateUserModel from "../models/CreateUserModel";
+import { AppContext } from "../../_contextApi/AppContext";
 
 export default function EmployeesPageLayout(props) {
   const { apiData } = props;
@@ -20,7 +22,13 @@ export default function EmployeesPageLayout(props) {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedRole, setSelectedRole] = useState("all");
   const [showForm, setShowForm] = useState(false);
-  console.log(apiData);
+  const {
+    isCreateUserForm,
+    setisCreateUserForm,
+    opencreateUserForm,
+    closecreateUserForm,
+  } = useContext(AppContext);
+
   // Filter users based on search and role
   const filteredUsers = users.filter((user) => {
     const matchesSearch =
@@ -41,6 +49,7 @@ export default function EmployeesPageLayout(props) {
       ...users,
     ]);
     setShowForm(false);
+    closecreateUserForm();
   };
 
   const handleToggleActive = (userId) => {
@@ -56,12 +65,11 @@ export default function EmployeesPageLayout(props) {
         <HeaderTopBar
           pageTitle="User Management"
           pageSubtitle="Manage system users and their roles"
-          // btnText="Create User"
-          // btnClickHandel={openUserForm}
+          btnText="Create user"
+          btnClickHandel={opencreateUserForm}
         />
         <div className={styles.stats_bar}>
           <div className={styles.stats_container}>
-            <StatTab statNumber={"24"} statLabel="Total Users" />
             <StatTab statNumber={"30"} statLabel="Admins" />
             <StatTab statNumber={"20"} statLabel="Employees" />
           </div>
@@ -141,6 +149,7 @@ export default function EmployeesPageLayout(props) {
           </div>
         </div>
       </div>
+      <CreateUserModel onSubmit={handleAddUser} />
     </div>
   );
 }

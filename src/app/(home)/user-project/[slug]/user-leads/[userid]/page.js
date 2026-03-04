@@ -6,7 +6,8 @@ import { API_BASE_URL } from "../../../../../../../config";
 export default async function UserProjectLeadRemakspage({ params }) {
   const cookieStore = await cookies();
   const token = cookieStore.get("jwt")?.value;
-  const { slug, userId } = await params;
+  const { slug, userid } = await params;
+
   let apiresult;
   if (!token) {
     throw new Error("Not authenticated");
@@ -15,7 +16,7 @@ export default async function UserProjectLeadRemakspage({ params }) {
   try {
     // 1. First API - Fetch project employees (already done)
     const response = await fetch(
-      `${API_BASE_URL}/lead/employee/699fdae949881b54b86e4c02/project/699fdaf537e9c491276b99d3/leads`,
+      `${API_BASE_URL}/lead/employee/${userid}/project/${slug}/leads`,
       {
         method: "GET",
         headers: {
@@ -39,7 +40,7 @@ export default async function UserProjectLeadRemakspage({ params }) {
   }
   return (
     <div>
-      <UserProjectLeadRemarks apiData={apiresult} />
+      <UserProjectLeadRemarks apiData={apiresult} userid={userid} />
     </div>
   );
 }

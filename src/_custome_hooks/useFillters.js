@@ -130,10 +130,13 @@ export default function useFillters(initialRows, initialRowsPerPage = 10) {
   // ✅ Get min and max price from data
   const getPriceLimits = () => {
     if (!originalData.length) return { min: 0, max: 10000000 };
-    const prices = originalData.map((item) => item.minPrice);
+    // Find the highest maxPrice
+    const maxPriceValue = Math.max(
+      ...originalData.map((item) => item.maxPrice),
+    );
     return {
       min: 0,
-      max: Math.max(...prices, 10000000),
+      max: maxPriceValue,
     };
   };
 

@@ -3,11 +3,13 @@ import React, { useState, useEffect } from "react";
 import styles from "./priceslider.module.css";
 
 export default function PriceSlider({ min, max, value, onChange }) {
-  const [range, setRange] = useState(value || { min: 0, max: max });
+  const [range, setRange] = useState(
+    value || { min: min || 0, max: max || 10000000 },
+  );
 
   useEffect(() => {
-    setRange(value || { min: 0, max: max });
-  }, [value, max]);
+    setRange(value || { min: min || 0, max: max || 10000000 });
+  }, [value, min, max]);
 
   const handleMinChange = (e) => {
     const newMin = parseInt(e.target.value);
@@ -35,6 +37,9 @@ export default function PriceSlider({ min, max, value, onChange }) {
     if (price >= 1000) return `${(price / 1000).toFixed(0)}K`;
     return price;
   };
+
+  const minPercentage = ((range.min - min) / (max - min)) * 100;
+  const maxPercentage = ((range.max - min) / (max - min)) * 100;
 
   return (
     <div className={styles.container}>

@@ -40,7 +40,7 @@
 .slider_range {
   position: absolute;
   height: 6px;
-  background: #4a6fa5;
+  background: var(--th-primary-color);
   border-radius: 10px;
   top: 0;
 }
@@ -62,7 +62,7 @@
   width: 20px;
   height: 20px;
   background: white;
-  border: 2px solid #4a6fa5;
+  border: 2px solid var(--th-primary-color);
   border-radius: 50%;
   cursor: pointer;
   pointer-events: auto;

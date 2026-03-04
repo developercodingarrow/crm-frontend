@@ -1,11 +1,26 @@
 import React from "react";
-import styles from "./leadcard.module.css";
-import { GoMail, GoDeviceMobile, GoTag } from "react-icons/go";
-import { GoPerson } from "react-icons/go";
+import styles from "./userassinedleadcard.module.css";
+import { GoPerson, GoMail, GoDeviceMobile } from "react-icons/go";
 import { MdMessage, MdGroup, MdArrowForward } from "react-icons/md";
+import {
+  MdOutlineMessage,
+  MdRemoveCircleOutline,
+  MdAddCircleOutline,
+} from "react-icons/md";
 import { IoMdAttach } from "react-icons/io";
+export default function UserAssinedLeadCard(props) {
+  const { lead, projectId, type, clickHandel, userId } = props;
 
-export default function LeadCard({ lead }) {
+  console.log("UserAssinedLeadCard---", lead);
+
+  const handleClick = async (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    clickHandel(lead.id);
+    // Add your add logic here
+  };
+
   // Get status color
   const getStatusColor = (status) => {
     switch (status) {
@@ -49,7 +64,6 @@ export default function LeadCard({ lead }) {
         return "#f1f5f9";
     }
   };
-
   return (
     <div className={styles.card}>
       {/* Left Section - Lead Info */}
@@ -57,7 +71,8 @@ export default function LeadCard({ lead }) {
         <div className={styles.nameRow}>
           <span className={styles.name}>{lead.name}</span>
           <span className={styles.userCount}>
-            <GoPerson /> {lead.userCount}
+            <GoPerson />
+            {/* {lead.assignedUsers.length} */}
           </span>
         </div>
 
@@ -85,7 +100,6 @@ export default function LeadCard({ lead }) {
             {lead.status}
           </span>
         </div>
-
         {/* Assigned Users */}
         {lead.assignedUsers && lead.assignedUsers.length > 0 && (
           <div className={styles.assignedUsers}>
@@ -114,8 +128,28 @@ export default function LeadCard({ lead }) {
 
       {/* Right Section - Action Links */}
       <div className={styles.rightSection}>
+        {type === "remove" && (
+          <button
+            className={styles.removeBtn}
+            onClick={handleClick} // 👈 Use the handler
+            title="Remove user from project"
+          >
+            <MdRemoveCircleOutline />
+          </button>
+        )}
+
+        {type === "add" && (
+          <button
+            className={styles.addBtn}
+            onClick={handleClick} // 👈 Use the handler
+            title="Add user to project"
+          >
+            <MdAddCircleOutline />
+          </button>
+        )}
+
         <a
-          href="/user-project/xyz/user-leads/xyz"
+          href={`/user-project/${projectId}/user-leads/${userId}`}
           className={styles.actionLink}
         >
           <MdMessage className={styles.actionIcon} />

@@ -19,8 +19,6 @@ export default function LeadCard({
     source: "Referral",
   };
 
-  console.log("lead--", lead);
-
   const handleAdd = async (e) => {
     e.preventDefault();
     e.stopPropagation();

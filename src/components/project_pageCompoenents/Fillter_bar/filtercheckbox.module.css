@@ -35,7 +35,7 @@
 }
 
 .checkbox_label.checked .checkbox_custom {
-  background: #4a6fa5;
+  background: var(--th-primary-color);
   border-color: #4a6fa5;
 }
 

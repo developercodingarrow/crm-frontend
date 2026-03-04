@@ -42,7 +42,6 @@ export default function CreateProjectLayout() {
         <HeaderTopBar
           pageTitle="Create Projects"
           pageSubtitle="Manage system Projects and Details"
-          btnText="Save Project"
         />
       </div>
       <div className={styles.inner_container}>

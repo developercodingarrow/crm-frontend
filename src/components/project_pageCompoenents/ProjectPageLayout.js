@@ -8,9 +8,11 @@ import FillterBar from "./Fillter_bar/FillterBar";
 import UserModel from "./users_Model/UserModel";
 import { CiFilter } from "react-icons/ci";
 import { ProjectAssignmentContext } from "../../_contextApi/ProjectAssignmentContext";
+import HeaderTopBar from "../elements/header_top_bar/HeaderTopBar";
+import FillterModel from "../models/FillterModel";
+import { FillterContext } from "../../_contextApi/FillterContextProvider";
 export default function ProjectPageLayout(props) {
   const { apiData, usersData } = props;
-
   const {
     visibleRows,
     filterByPropertyType,
@@ -27,14 +29,32 @@ export default function ProjectPageLayout(props) {
     getUniqueBuilders,
     getPriceLimits,
   } = useFillters(apiData);
+
+  const { handelopenFillter } = useContext(FillterContext);
   const { selectedProjects, getSelectedCount, clearAllProjects } = useContext(
     ProjectAssignmentContext,
   );
   return (
     <div className={styles.main_container}>
-      <section className={styles.page_headerSection}>page header</section>
+      <FillterModel
+        locationSearch={locationSearch}
+        searchByLocation={searchByLocation}
+        filterByPropertyType={filterByPropertyType}
+        propertyTypeFilter={propertyTypeFilter}
+        filterByPrice={filterByPrice}
+        filterByBuilder={filterByBuilder}
+        builderFilter={builderFilter}
+        getUniqueBuilders={getUniqueBuilders}
+        getPriceLimits={getPriceLimits}
+      />
+      <section className={styles.page_header}>
+        <HeaderTopBar
+          pageTitle="Project Management"
+          pageSubtitle=" Manage and track your Project efficiently"
+        />
+      </section>
       <div className={styles.inner_container}>
-        <div className={styles.fillter_wrapper}>
+        <div className={styles.sidefillter_wrapper}>
           <FillterBar
             filterByPropertyType={filterByPropertyType}
             propertyTypeFilter={propertyTypeFilter}
@@ -48,12 +68,12 @@ export default function ProjectPageLayout(props) {
             getPriceLimits={getPriceLimits}
           />
         </div>
-        <div className={styles.page_elements_wrapper}>
-          <div className={styles.top_bar}>
-            <div className={styles.searchBar_wrapper}>
+        <div className={styles.project_wrapper}>
+          <div className={styles.search_wrapper}>
+            <div className={styles.searbar_wrapper}>
               <SearchProjectElement onSearch={searchByPropertyName} />
             </div>
-            <div className={styles.filtter_btn}>
+            <div className={styles.filtter_btn} onClick={handelopenFillter}>
               <CiFilter />
             </div>
           </div>
@@ -70,9 +90,9 @@ export default function ProjectPageLayout(props) {
             })}
           </div>
         </div>
-        <div className={styles.users_wrapper}>
+        {/* <div className={styles.users_wrapper}>
           <UserModel users={usersData?.users} />
-        </div>
+        </div> */}
       </div>
     </div>
   );

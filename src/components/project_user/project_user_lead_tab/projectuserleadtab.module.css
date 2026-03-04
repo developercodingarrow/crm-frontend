@@ -34,3 +34,39 @@
   padding: 0rem 2rem;
   margin-bottom: 2rem;
 }
+
+.fillter_wrapper {
+  padding: 0rem 1rem;
+}
+
+.searchWrapper {
+  margin: 16px 0;
+}
+
+.filterWrapper {
+  margin: 16px 0;
+}
+
+.filterRow {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.clearBtn {
+  padding: 8px 16px;
+  background: #f1f5f9;
+  border: 1px solid #e9ecef;
+  border-radius: 30px;
+  color: #64748b;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.clearBtn:hover {
+  background: #e2e8f0;
+  color: #1e293b;
+}

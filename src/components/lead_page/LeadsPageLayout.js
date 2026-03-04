@@ -8,6 +8,8 @@ import LeadCard from "./lead_card/LeadCard";
 import CreateLeadForm from "./Create_Lead_Form/CreateLeadForm";
 import BulkUpload from "./Bulk_lead_Upload/BulkUpload";
 import { createNewLead } from "../../app/utils/leadActions";
+import LeadUploadModel from "../models/LeadUploadModel";
+import MobileFooter from "../footer/MobileFooter";
 
 export default function LeadsPageLayout(props) {
   const { showCreateForm, setShowCreateForm, openLeadForm } =
@@ -177,6 +179,10 @@ export default function LeadsPageLayout(props) {
           </div>
         </div>
       </div>
+      <LeadUploadModel
+        handleAddLead={handleAddLead}
+        handleBulkUpload={handleBulkUpload}
+      />
     </div>
   );
 }

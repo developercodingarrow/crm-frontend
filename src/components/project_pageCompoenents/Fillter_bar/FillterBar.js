@@ -73,9 +73,12 @@ export default function FillterBar({
       <div className={styles.inner_container}>
         <div className={styles.fillter_header}>
           <div className={styles.fillter_title}>Filter</div>
-          <button onClick={handleClearAll} className={styles.clearAll_btn}>
-            clear all
-          </button>
+
+          <div className={styles.btn_container}>
+            <button onClick={handleClearAll} className={styles.clearAll_btn}>
+              clear all
+            </button>
+          </div>
         </div>
 
         {/* ✅ Location Search - At the top */}

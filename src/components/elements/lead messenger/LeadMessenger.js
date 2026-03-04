@@ -16,9 +16,8 @@ import { AppContext } from "../../../_contextApi/AppContext";
 import { leadRemarksAction } from "../../../app/utils/remakesActions";
 
 export default function LeadMessenger(props) {
-  const { projectLeads } = props;
+  const { projectLeads, userid } = props;
 
-  console.log("projectLeads--", projectLeads);
   const messagesEndRef = useRef(null);
 
   const {
@@ -35,7 +34,7 @@ export default function LeadMessenger(props) {
   const [isSending, setIsSending] = useState(false);
   const [refreshTrigger, setRefreshTrigger] = useState(0);
 
-  console.log("leadRemarks-", leadRemarks);
+  // console.log("leadRemarks-", leadRemarks);
 
   const filteredLeads = projectLeads.filter((lead) =>
     lead.name.toLowerCase().includes(searchTerm.toLowerCase()),
@@ -49,7 +48,6 @@ export default function LeadMessenger(props) {
   }, [selectedLeadMobile]);
 
   const handleLeadSelect = async (lead) => {
-    console.log("selectedid--", lead);
     setSelectedLead(lead);
     // Add this line if you have setSelectedLeadMobile in context
     if (setSelectedLeadMobile) {
@@ -59,10 +57,10 @@ export default function LeadMessenger(props) {
     if (window.innerWidth <= 768) {
       openMobileChat(lead);
     }
-
+    console.log("leadId:", lead.id, "userid:", userid);
     try {
-      const res = await leadRemarksAction(lead.id);
-      console.log("res-leads selection", res);
+      const res = await leadRemarksAction(lead.id, userid);
+      console.log("leadRemarksAction", res);
       setSelectedLead(res.data.data.lead);
       setleadRemarks(res.data.data.remarks);
     } catch (error) {
@@ -83,8 +81,13 @@ export default function LeadMessenger(props) {
     try {
       const remarks = messageInput;
       const payload = { remarks };
-      console.log("leadID---", leadID);
-      console.log("payload--", payload);
+      console.log(
+        "handelCreatenewRemark:",
+        "payload",
+        payload,
+        "leadID:",
+        leadID,
+      );
       const res = await createLeadRemak(payload, leadID);
       console.log("res--", res);
       // ✅ Transform the response to match your leadRemarks format

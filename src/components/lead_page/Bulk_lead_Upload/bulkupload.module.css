@@ -161,3 +161,13 @@
   color: #94a3b8;
   font-size: 14px;
 }
+
+/* Mobile specific */
+@media screen and (max-width: 780px) {
+  .sample_btn {
+    font-size: 12px;
+  }
+  .upload_btn {
+    font-size: 12px;
+  }
+}

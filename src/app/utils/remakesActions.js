@@ -3,7 +3,7 @@
 const { API_BASE_URL } = require("../../../config");
 import { cookies } from "next/headers";
 
-export async function leadRemarksAction(leadID) {
+export async function leadRemarksAction(leadID, userid) {
   try {
     const cookieStore = await cookies();
     const authToken = cookieStore.get("jwt")?.value;
@@ -16,7 +16,7 @@ export async function leadRemarksAction(leadID) {
     }
 
     const res = await fetch(
-      `${API_BASE_URL}/remarks/getUserLeadRemarks/${leadID}/user/699bd87d03800223785558fa`,
+      `${API_BASE_URL}/remarks/getUserLeadRemarks/${leadID}/user/${userid}`,
       {
         method: "GET",
         headers: {

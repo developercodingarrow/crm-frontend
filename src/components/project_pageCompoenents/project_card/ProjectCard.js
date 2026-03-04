@@ -1,54 +1,118 @@
 "use client";
-import React, { useContext } from "react";
+import React from "react";
 import styles from "./projectcard.module.css";
-import { LuMapPinCheckInside } from "react-icons/lu";
-import { ProjectAssignmentContext } from "../../../_contextApi/ProjectAssignmentContext";
+import { LuMapPin, LuBuilding, LuCalendar, LuDollarSign } from "react-icons/lu";
+import { GoPeople, GoBriefcase, GoArrowRight } from "react-icons/go";
+import { FaCrown, FaHome } from "react-icons/fa";
 import Link from "next/link";
-export default function ProjectCard(props) {
-  const { item } = props;
-  const { toggleProjectSelection, isProjectSelected, selectedProjects } =
-    useContext(ProjectAssignmentContext);
 
-  const isSelected = isProjectSelected(item?._id);
-
-  const handleCheckboxChange = (e) => {
-    e.stopPropagation(); // Prevent event bubbling
-    toggleProjectSelection(item);
+export default function ProjectCard({ item }) {
+  // Format price in Crores
+  const formatPrice = (price) => {
+    const inCrores = price / 10000000;
+    return `₹${inCrores} Cr`;
   };
 
-  console.log("item--", item);
+  // Format date
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString("en-IN", {
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
+    });
+  };
+
+  // Get type icon and color
+  const getTypeDetails = (type) => {
+    switch (type?.toLowerCase()) {
+      case "luxury":
+        return { icon: <FaCrown />, color: "#8b5cf6", bg: "#f3e8ff" };
+      case "affordable":
+        return { icon: <FaHome />, color: "#10b981", bg: "#e0f7e9" };
+      default:
+        return { icon: <LuBuilding />, color: "#3b82f6", bg: "#e6f0ff" };
+    }
+  };
+
+  const typeDetails = getTypeDetails(item?.propertyType);
 
   return (
-    <div className={styles.main_container}>
-      <div className={styles.card_topBar}>
-        <div className={styles.top_leftColumn}>
-          <div className={styles.card_checkbox}>
-            <input
-              type="checkbox"
-              checked={isSelected}
-              onChange={handleCheckboxChange}
-              onClick={(e) => e.stopPropagation()} // Extra prevention
-            />
-          </div>
-          <div className={styles.property_type}>{item?.propertyType} </div>
-          <div className={styles.builder}>{item?.builder} </div>
-        </div>
-        <div className={styles.createdAt_column}>Created at: 2/2/2026</div>
-      </div>
-      <div className={styles.card_title}>{item?.propertyName}</div>
-      <div className={styles.card_footer}>
-        <div className={styles.property_location}>
-          <div className={styles.location_icon}>
-            <LuMapPinCheckInside />
-          </div>
-          <div className={styles.city}>{item?.city}</div>
-          <div className={styles.state}>{item?.state}</div>
-        </div>
-        <Link
-          href={`/project-details/${item?._id}`}
-          className={styles.details_btn}
+    <div className={styles.card}>
+      {/* Top Row - Type and Date */}
+      <div className={styles.topRow}>
+        <span
+          className={styles.typeBadge}
+          style={{ background: typeDetails.bg, color: typeDetails.color }}
         >
-          details
+          <span className={styles.typeIcon}>{typeDetails.icon}</span>
+          {item?.propertyType}
+        </span>
+        <span className={styles.date}>
+          <LuCalendar className={styles.dateIcon} />
+          {formatDate(item?.createdAt)}
+        </span>
+      </div>
+
+      {/* Project Name */}
+      <h3 className={styles.projectName}>{item?.propertyName}</h3>
+
+      {/* Builder */}
+      <div className={styles.builder}>
+        <GoBriefcase className={styles.builderIcon} />
+        <span>{item?.builder}</span>
+      </div>
+
+      {/* Location and Price Row */}
+      <div className={styles.locationPriceRow}>
+        <div className={styles.location}>
+          <LuMapPin className={styles.locationIcon} />
+          <span>
+            {item?.city}, {item?.state}
+          </span>
+        </div>
+        <div className={styles.price}>
+          <span>
+            {formatPrice(item?.minPrice)} - {formatPrice(item?.maxPrice)}
+          </span>
+        </div>
+      </div>
+
+      {/* Address */}
+      <div className={styles.address}>
+        <span>{item?.address}</span>
+      </div>
+
+      {/* Stats and Button Row */}
+      <div className={styles.statsButtonRow}>
+        {/* Stats */}
+        <div className={styles.stats}>
+          <div className={styles.statItem}>
+            <GoPeople
+              className={styles.statIcon}
+              style={{ color: "#3b82f6" }}
+            />
+            <div className={styles.statInfo}>
+              <span className={styles.statValue}>{item?.userCount || 0}</span>
+              <span className={styles.statLabel}>users</span>
+            </div>
+          </div>
+          <span className={styles.statDivider}>•</span>
+          <div className={styles.statItem}>
+            <LuBuilding
+              className={styles.statIcon}
+              style={{ color: "#10b981" }}
+            />
+            <div className={styles.statInfo}>
+              <span className={styles.statValue}>{item?.leadCount || 0}</span>
+              <span className={styles.statLabel}>leads</span>
+            </div>
+          </div>
+        </div>
+
+        {/* View Button */}
+        <Link href={`/project-details/${item?._id}`} className={styles.viewBtn}>
+          View <GoArrowRight className={styles.arrowIcon} />
         </Link>
       </div>
     </div>

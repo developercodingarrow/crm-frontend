@@ -4,6 +4,7 @@ import styles from "./mainlayoutwrapper.module.css";
 import MainNavbar from "./main_navbar/MainNavbar";
 import Asidebar from "./asidebar/Asidebar";
 import { AppContext } from "../../_contextApi/AppContext";
+import MobileFooter from "../footer/MobileFooter";
 export default function MainLayoutWrapper({ children }) {
   const { isSidebarCollapsed, handelToggleAsidebar } = useContext(AppContext);
   return (
@@ -16,6 +17,10 @@ export default function MainLayoutWrapper({ children }) {
           <Asidebar />
         </div>
         <div className={styles.children_wrapper}>{children}</div>
+      </section>
+
+      <section className={styles.footer_wrapper}>
+        <MobileFooter />
       </section>
     </div>
   );
