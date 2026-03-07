@@ -11,8 +11,6 @@ import { IoMdAttach } from "react-icons/io";
 export default function UserAssinedLeadCard(props) {
   const { lead, projectId, type, clickHandel, userId } = props;
 
-  console.log("UserAssinedLeadCard---", lead);
-
   const handleClick = async (e) => {
     e.preventDefault();
     e.stopPropagation();

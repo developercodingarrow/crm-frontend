@@ -46,13 +46,11 @@ export const ProjectAssignmentProvider = ({ children }) => {
   const assignToUser = (userId) => {
     setSelectedUserId(userId);
     // Here you would typically make an API call to save the assignment
-    console.log("Assigning projects:", selectedProjects, "to user:", userId);
   };
 
   // Assign projects to user
   const assignProjects = async (selectedUser) => {
     if (selectedProjects.length === 0 || !selectedUser) {
-      console.log("No projects or user selected");
       return;
     }
 
@@ -66,11 +64,7 @@ export const ProjectAssignmentProvider = ({ children }) => {
         projectIds: projectIDs,
       };
 
-      console.log("formData--", formData);
-
       const result = await assignMultipleProjectsToMultipleEmployees(formData);
-
-      console.log("Assignment result:", result);
     } catch (error) {
       setAssignmentResult({
         success: false,

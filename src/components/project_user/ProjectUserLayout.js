@@ -7,7 +7,7 @@ import PageUserTopBar from "../elements/page_user_topbar/PageUserTopBar";
 import UserProjectStats from "../elements/user_project_stats/UserProjectStats";
 export default function ProjectUserLayout(props) {
   const { apiData, allLeads, projectId, userId } = props;
-  console.log("project user -", apiData);
+
   return (
     <div className={styles.main_container}>
       <div className={styles.pageheader_wrapper}>

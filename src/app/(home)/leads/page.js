@@ -37,7 +37,6 @@ export default async function Leadpage() {
     console.log("error----", error);
   }
 
-  console.log("apiResult---", apiResult);
   return (
     <div>
       <LeadsPageLayout apiLead={apiResult} />

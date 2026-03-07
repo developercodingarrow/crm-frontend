@@ -10,8 +10,6 @@ import { IoMdAttach } from "react-icons/io";
 export default function EmployesCard({ user }) {
   const [isActive, setIsActive] = useState(true);
 
-  console.log(user);
-
   const handleToggle = (e) => {
     e.preventDefault(); // Prevent link navigation
     e.stopPropagation();
@@ -106,11 +104,11 @@ export default function EmployesCard({ user }) {
             <div className={styles.toggleKnob}></div>
           </div>
         </div>
-        <a href="/users" className={styles.actionLink}>
+        <Link href={`/user-details/${user._id}`} className={styles.actionLink}>
           <MdGroup className={styles.actionIcon} />
           <span>detail</span>
           <MdArrowForward className={styles.arrowIcon} />
-        </a>
+        </Link>
       </div>
     </div>
   );

@@ -22,7 +22,6 @@ export default function AssignedUserCard({ user, onRemove }) {
       .slice(0, 2);
   };
 
-  console.log("user", user);
   const initials = getInitials(user.name);
 
   const handleRemoveClick = (e) => {

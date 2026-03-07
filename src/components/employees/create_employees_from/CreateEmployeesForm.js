@@ -21,14 +21,12 @@ export default function CreateEmployeesForm() {
   ];
 
   const onSubmit = async (data) => {
-    console.log("Form Data:", { ...data, role: selectedRole });
     const formData = {
       ...data,
       role: selectedRole,
     };
     try {
       const res = await createNewTeam(formData);
-      console.log("create new team----", res);
     } catch (error) {}
     // Add your API call here
     reset();

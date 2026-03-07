@@ -37,7 +37,6 @@ export default function UserForm({ onSubmit }) {
 
     try {
       const res = await createNewTeam(userData);
-      console.log("create user", res);
     } catch (error) {
       console.log("error---", error);
     }

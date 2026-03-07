@@ -16,9 +16,9 @@ export const metadata = {
 
 export default function AuthLayout({ children }) {
   return (
-    <body className="font-sans antialiased">
+    <div>
       <AuthNavbar />
-      <div>{children}</div>
-    </body>
+      {children}
+    </div>
   );
 }

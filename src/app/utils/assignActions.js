@@ -40,7 +40,6 @@ export async function assignMultipleProjectsToMultipleEmployees(formData) {
 
     // Try to parse as JSON
     const data = await res.json();
-    console.log("Response data:", data);
 
     // ✅ Return the data
     return {
@@ -94,7 +93,6 @@ export async function removeEmployeefromProject(formData) {
 
     // Try to parse as JSON
     const data = await res.json();
-    console.log("Response data:", data);
 
     // ✅ Return the data
     return {
@@ -148,7 +146,6 @@ export async function assignProjectToEmployee(formData) {
 
     // Try to parse as JSON
     const data = await res.json();
-    console.log("Response data:", data);
 
     // ✅ Return the data
     return {
@@ -190,7 +187,6 @@ export async function assignLeadsToProject(formData) {
       },
     );
 
-    console.log("res--x", res);
     // Check if response is OK
     if (!res.ok) {
       const text = await res.text();
@@ -203,7 +199,6 @@ export async function assignLeadsToProject(formData) {
 
     // Try to parse as JSON
     const data = await res.json();
-    console.log("Response data:", data);
 
     // ✅ Return the data
     return {

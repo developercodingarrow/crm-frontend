@@ -22,9 +22,6 @@ export default function LeadCard({
   const handleAdd = async (e) => {
     e.preventDefault();
     e.stopPropagation();
-    console.log("leadIds:", leadData.id);
-    console.log("projectId:", projectId);
-    console.log("userId:", userId);
 
     const formData = {
       leadId: leadData.id,
@@ -32,10 +29,8 @@ export default function LeadCard({
       userId: userId,
     };
 
-    console.log("formData--", formData);
     try {
       const res = await assignLeadToUserAction(formData);
-      console.log("res---", res);
     } catch (error) {
       console.log("error---", error);
     }
@@ -46,7 +41,7 @@ export default function LeadCard({
     // projectId
     e.preventDefault();
     e.stopPropagation();
-    console.log("Remove lead:", leadData.id);
+
     // Add your remove logic here
   };
 

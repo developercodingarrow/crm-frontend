@@ -18,8 +18,6 @@ export default function ProjectUserLeadTab(props) {
   const [avilableLeads, setavilableLeads] = useState(allLeads);
   const [assingedLeadList, setassingedLeadList] = useState(assignedLeads);
 
-  console.log("assignedLeads---x-x", assignedLeads);
-
   // Search and filter states
   const [userSearch, setUserSearch] = useState("");
   const [leadSearch, setLeadSearch] = useState("");
@@ -92,13 +90,12 @@ export default function ProjectUserLeadTab(props) {
 
     try {
       const res = await assignLeadToUserAction(formData);
-      console.log("res---", res.data);
+
       if (res.data.status === "success") {
         setavilableLeads((prevData) =>
           prevData.filter((item) => item.id !== leadId),
         );
         router.refresh();
-        console.log("User removed successfully from UI");
       }
     } catch (error) {
       console.log("error---", error);
@@ -115,12 +112,11 @@ export default function ProjectUserLeadTab(props) {
 
     try {
       const res = await removeLeadToUserAction(formData);
-      console.log("res---", res);
+
       if (res.data.status === "success") {
         setassingedLeadList((prevData) =>
           prevData.filter((item) => item.id !== leadId),
         );
-        console.log("User removed successfully from UI");
       }
       router.refresh();
     } catch (error) {

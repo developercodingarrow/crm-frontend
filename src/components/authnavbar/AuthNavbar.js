@@ -1,18 +1,27 @@
+"use client";
 import React from "react";
 import styles from "./authnavbar.module.css";
-import navLogo from "../../../public/layer-thick-icon.png";
+import logoImg from "../../../public/layer-thick-icon.png";
 import Image from "next/image";
 export default function AuthNavbar() {
   return (
     <div className={styles.main_container}>
-      <div className={styles.logo_wraaper}>
-        <Image
-          src={navLogo}
-          alt="logo-image"
-          width={100}
-          height={100}
-          className={styles.logoStyle}
-        />
+      <div className={styles.inner_container}>
+        <div className={styles.left_column}>
+          <div className={styles.navbar_logo}>
+            <div className={styles.nav_logo}>
+              <Image
+                alt="nav-logo"
+                src={logoImg}
+                width={24}
+                height={24}
+                className={styles.navlogo_img}
+              />
+            </div>
+            <div className={styles.logo_text}>Office</div>
+            <div className={styles.logo_sub}>CRM</div>
+          </div>
+        </div>
       </div>
     </div>
   );

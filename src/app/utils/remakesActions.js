@@ -40,7 +40,6 @@ export async function leadRemarksAction(leadID, userid) {
 
     // Try to parse as JSON
     const data = await res.json();
-    console.log("Response data:", data);
 
     // ✅ Return the data
     return {
@@ -73,7 +72,6 @@ export async function createLeadRemak(formData, leadID) {
       "Making request to:",
       `${API_BASE_URL}/remarks/addNewRemark/${leadID}`,
     );
-    console.log("With payload:", formData);
 
     const res = await fetch(`${API_BASE_URL}/remarks/addNewRemark/${leadID}`, {
       method: "POST",
@@ -86,7 +84,6 @@ export async function createLeadRemak(formData, leadID) {
     });
 
     const responseText = await res.text(); // Get raw response
-    console.log("Raw response:", responseText);
 
     if (!res.ok) {
       return {

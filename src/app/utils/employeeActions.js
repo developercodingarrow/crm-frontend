@@ -37,7 +37,6 @@ export async function createNewTeam(formData) {
 
     // Try to parse as JSON
     const data = await res.json();
-    console.log("Response data:", data);
 
     // ✅ Return the data
     return {

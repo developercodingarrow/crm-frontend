@@ -10,10 +10,12 @@ import {
 } from "react-icons/go";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { IoMdAttach } from "react-icons/io";
-
 import LeadStatus from "./LeadStatus";
 import { AppContext } from "../../../_contextApi/AppContext";
-import { leadRemarksAction } from "../../../app/utils/remakesActions";
+import {
+  createLeadRemak,
+  leadRemarksAction,
+} from "../../../app/utils/remakesActions";
 
 export default function LeadMessenger(props) {
   const { projectLeads, userid } = props;
@@ -33,8 +35,6 @@ export default function LeadMessenger(props) {
   const [messageInput, setMessageInput] = useState("");
   const [isSending, setIsSending] = useState(false);
   const [refreshTrigger, setRefreshTrigger] = useState(0);
-
-  // console.log("leadRemarks-", leadRemarks);
 
   const filteredLeads = projectLeads.filter((lead) =>
     lead.name.toLowerCase().includes(searchTerm.toLowerCase()),
@@ -57,10 +57,10 @@ export default function LeadMessenger(props) {
     if (window.innerWidth <= 768) {
       openMobileChat(lead);
     }
-    console.log("leadId:", lead.id, "userid:", userid);
+
     try {
       const res = await leadRemarksAction(lead.id, userid);
-      console.log("leadRemarksAction", res);
+
       setSelectedLead(res.data.data.lead);
       setleadRemarks(res.data.data.remarks);
     } catch (error) {
@@ -81,23 +81,17 @@ export default function LeadMessenger(props) {
     try {
       const remarks = messageInput;
       const payload = { remarks };
-      console.log(
-        "handelCreatenewRemark:",
-        "payload",
-        payload,
-        "leadID:",
-        leadID,
-      );
+
       const res = await createLeadRemak(payload, leadID);
-      console.log("res--", res);
+
       // ✅ Transform the response to match your leadRemarks format
       if (res.data.status === "success") {
         const newRemark = res.data.data.remark;
-        console.log("res---", res.data);
+
         // Transform to match your UI format
         const transformedRemark = {
           id: newRemark.id,
-          sender: "You", // Since current user created it
+          sender: "superadmin", // Since current user created it
           message: newRemark.remarks,
           time: "just now", // You need to create this function
           isMe: true,

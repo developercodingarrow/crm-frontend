@@ -43,9 +43,8 @@ export default function LeadsPageLayout(props) {
 
   const handleAddLead = async (newLead) => {
     try {
-      console.log("newLead-", newLead);
       const res = await createNewLead(newLead);
-      console.log("createNewLead---", res);
+
       if (res.data.status === "success") {
         const createdLead = res.data.data; // or res.data depending on your API structure
         // Format the lead to match your frontend structure
@@ -69,9 +68,6 @@ export default function LeadsPageLayout(props) {
   const handleBulkUpload = (uploadedLeads) => {
     // Add uploaded leads to your existing leads list
     setLeads((prevLeads) => [...uploadedLeads, ...prevLeads]);
-
-    // You can also show a success toast/notification
-    console.log(`${uploadedLeads.length} leads uploaded successfully`);
   };
   return (
     <div className={styles.main_container}>

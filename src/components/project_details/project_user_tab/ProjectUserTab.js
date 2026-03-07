@@ -94,7 +94,6 @@ export default function ProjectUserTab(props) {
         setassiendUserList((prevUsers) =>
           prevUsers.filter((user) => user._id !== employeeId),
         );
-        console.log("User removed successfully from UI");
       }
     } catch (error) {
       console.error("Error removing user:", error);
@@ -107,16 +106,14 @@ export default function ProjectUserTab(props) {
         userId: employeeId,
         projectId: projectId,
       };
-      console.log("formData---", formData);
+
       const res = await assignUserToProjectAction(formData);
-      console.log("assign result:", res.data);
 
       if (res.data.status === "success") {
         // ✅ Remove user from UI by filtering out the deleted user
         setavilableUsers((prevUsers) =>
           prevUsers.filter((user) => user.id !== employeeId),
         );
-        console.log("User removed successfully from UI");
       }
     } catch (error) {
       console.error("Error removing user:", error);

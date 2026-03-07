@@ -4,7 +4,6 @@ import StatBar from "../project_stats/Stat_bar/StatBar";
 export default function UserProjectStats(props) {
   const { statsData, assignedLeads, availableLeads, userName } = props;
 
-  console.log("statsData", statsData);
   const totalLeadsCount = assignedLeads + availableLeads;
 
   // Helper function to calculate remaining leads for a given status

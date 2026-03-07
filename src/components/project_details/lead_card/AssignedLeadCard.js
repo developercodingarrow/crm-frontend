@@ -6,7 +6,7 @@ import { IoMdAttach } from "react-icons/io";
 
 export default function AssignedLeadCard(props) {
   const { lead, projectId, userId } = props;
-  console.log("lead---", lead);
+
   // Get status color
   const getStatusColor = (status) => {
     switch (status) {

@@ -87,7 +87,6 @@ export default async function ProjectDetailspage({ params }) {
     ]);
 
     if (usersData.status === "success") {
-      console.log("usersData--", usersData?.data?.users);
       availableUsers = usersData?.data?.availableUsers || [];
       avilableuserCount = usersData?.results;
     }

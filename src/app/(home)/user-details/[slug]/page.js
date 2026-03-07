@@ -35,8 +35,6 @@ export default async function UserDetailpage({ params }) {
     if (data.status === "success") {
       apiData = data?.data;
     }
-
-    console.log("user details", apiData);
   } catch (error) {
     console.log("error--", error);
   }

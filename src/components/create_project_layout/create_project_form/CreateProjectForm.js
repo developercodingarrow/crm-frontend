@@ -24,7 +24,7 @@ export default function CreateProjectForm({ onProjectCreated }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form Data:", formData);
+
     if (onProjectCreated) {
       onProjectCreated(formData);
     }

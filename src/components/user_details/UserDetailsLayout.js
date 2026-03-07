@@ -8,18 +8,18 @@ import PageTab from "./page_tab/PageTab";
 import { GoProject, GoPerson, GoGraph } from "react-icons/go";
 import UserLeads from "./user_leads/UserLeads";
 import UserProjectCard from "./user_projects/UserProjectCard";
+import UserActivity from "./user_activity/UserActivity";
 // Define your tabs
 const tabs = [
-  { id: "overview", label: "Overview", icon: <GoGraph />, count: 3 },
+  { id: "activity", label: "Activity", icon: <GoGraph />, count: 3 },
   { id: "projects", label: "Projects", icon: <GoProject />, count: 3 },
   { id: "leads", label: "All Leads", icon: <GoPerson />, count: 42 },
 ];
 export default function UserDetailsLayout(props) {
   const { apiData } = props;
 
-  const [activeTab, setActiveTab] = useState("projects");
+  const [activeTab, setActiveTab] = useState("activity");
 
-  console.log("user details", apiData.stats);
   return (
     <div className={styles.main_container}>
       <div className={styles.page_header}>
@@ -70,6 +70,10 @@ export default function UserDetailsLayout(props) {
             </div>
           )}
           {activeTab === "leads" && <UserLeads apileadsData={apiData.leads} />}
+
+          {activeTab === "activity" && (
+            <UserActivity apileadsData={apiData.activity} />
+          )}
         </div>
       </div>
     </div>

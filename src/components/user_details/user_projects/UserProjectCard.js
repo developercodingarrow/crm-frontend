@@ -4,7 +4,6 @@ import { GoLocation, GoBriefcase } from "react-icons/go";
 import { MdArrowForward } from "react-icons/md";
 
 export default function UserProjectCard({ project }) {
-  console.log("project--", project);
   // Get status class for distribution bar
   const getStatusClass = (key) => {
     const classes = {

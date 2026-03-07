@@ -53,7 +53,6 @@ export default function UserModel(props) {
 
   // Handle assign button click
   const handleAssign = () => {
-    console.log("Assigning to users:", selectedUsers);
     assignProjects(selectedUsers);
     // Add your assign logic here
   };

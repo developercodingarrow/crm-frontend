@@ -30,16 +30,14 @@ export default function LeadStatus({ onStatusSelect, leadId }) {
   }, []);
 
   const handleStatusClick = async (status) => {
-    console.log("Selected Status:", status, "for Lead ID:", leadId);
     onStatusSelect(status, leadId);
     setIsOpen(false);
     const formData = {
       status: status,
     };
-    console.log("formData--", formData);
+
     try {
       const res = await changeLeadStatusAction(formData, leadId);
-      console.log("res---", res);
     } catch (error) {
       console.log("error--", error);
     }

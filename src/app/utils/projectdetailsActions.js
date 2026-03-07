@@ -40,7 +40,6 @@ export async function assignUserToProjectAction(formData) {
 
     // Try to parse as JSON
     const data = await res.json();
-    console.log("Response data:", data);
 
     // ✅ Return the data
     return {
@@ -94,7 +93,6 @@ export async function removeUserFromProjectAction(formData) {
 
     // Try to parse as JSON
     const data = await res.json();
-    console.log("Response data:", data);
 
     // ✅ Return the data
     return {
